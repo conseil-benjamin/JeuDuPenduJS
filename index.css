@@ -14,7 +14,14 @@ body {
   height: 100vh;
 }
 
-#textePendu{
+header {
+  position: absolute;
+  top: 0;
+  padding: 4em 0 0 0;
+  font-size: 2rem;
+}
+
+#textePendu {
   padding-bottom: 2em;
   font-size: 2rem;
   text-align: center;
@@ -28,6 +35,7 @@ body {
 
 #btn-valider:hover {
   color: var(--colorQuartz);
+  cursor: pointer;
   background-color: black;
 }
 
@@ -43,14 +51,29 @@ body {
 }
 
 #btn-Jouer {
-  height: 100px;
-  width: 200px;
+  height: 50px;
+  width: 100px;
   padding: 0.5em;
   transition: 0.3s ease-in-out;
   border-radius: 20px;
 }
 
-#btn-jouer:hover {
+#btn-Jouer:hover {
+  cursor: pointer;
+  color: var(--colorQuartz);
+  background-color: black;
+}
+
+#btn-rejouer {
+  height: 40px;
+  width: 70px;
+  padding: 0.5em;
+  transition: 0.3s ease-in-out;
+  border-radius: 20px;
+}
+
+#btn-rejouer:hover {
+  cursor: pointer;
   color: var(--colorQuartz);
   background-color: black;
 }

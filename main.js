@@ -1,1 +1,1 @@
-jeu();
+lancement();

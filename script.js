@@ -1,12 +1,12 @@
-function validationLettre(motRandom) {
+/*
+function miseEnPlace(motRandom) {
   let lettre = document.querySelector("#lettre");
-  let mot = document.querySelector("#textePendu");
+  
 
   // vérifier si la lettre est correcte si il n'y en a pas plusieurs
   /* if(lettre != ) {
 
   }
-  */
 
   console.log(motRandom);
 
@@ -14,35 +14,61 @@ function validationLettre(motRandom) {
   for (let i = 0; i < motRandom.length; i++) {
     result = motRandom.replace(i, "_");
   }
-  mot.textContent = result;
-}
+  
+} 
 
-// commencement du jeu à l'appuie du bouton jouer
+*/
+
+// commencement du jeu à l'appuie du bouton jouer et initialisation d'un mot pour le jeu
 function lancement() {
   let zoneJeu = document.querySelector(".zoneJeu");
-
   zoneJeu.style.display = "block";
-  jeu();
-}
-
-function jeu() {
-  let lettre = document.querySelector("#lettre");
-  console.log(lettre.value);
 
   let btnJouer = document.querySelector("#btn-Jouer");
   btnJouer.style.display = "none";
+
+  let mot = document.querySelector("#textePendu");
+
   // on affiche un mot aléatoire
-  let motRandom = motsCachés[Math.floor(Math.random() * motsCachés.length)];
+  let motRandom = motsCaches[Math.floor(Math.random() * motsCaches.length)];
+  let indexMotRandom = motsCaches.indexOf(motRandom);
+  console.log(indexMotRandom); // marche bien
+  let motRandomRevele = mots[indexMotRandom];
+
+  mot.textContent = motRandom;
+
+  jeu(motRandom, motRandomRevele);
+}
+
+function jeu(motRandom, motRandomRevele) {
+  let lettre = document.querySelector("#lettre");
+
+  let nbChances = 10;
+  let nbChancesElement = document.querySelector("#nbChances");
   // ...
 
   // ensuite on vérifie si la lettre rentré dans l'input est correcte
-  validationLettre(motRandom);
+  // faire une fonction qui vérifie l'input ( pas plus d'un caractère, cela doit etre uniquement une lettre)
+  // a faire
 
-  // ... Jeu avec soustraction de point affichage des lettres etc ...
+  let lettreTape = lettre.value;
+  console.log(lettreTape);
+  let subStringValue = "";
+
+  for (let i = 0; i < motRandomRevele.length; i++) {
+    console.log(motRandomRevele[i]);
+    if (lettreTape === motRandomRevele[i]) {
+      subStringValue.substring(i, 1); //test
+      console.log(subStringValue); // test
+      motRandom[i] = motRandomRevele[i];
+    } else {
+      nbChances--;
+    }
+  }
+
+  // régler problème doublon ou plus pour une lettre si cela n'est pas régler de base
 
   // on vérifie si le joueur à encore une chance ou non
-  let nbChances = motRandom.length / 2 + 2;
-  let nbChancesElement = document.querySelector("#nbChances");
 
   if (nbChances === 0) {
     finJeu(motRandom);

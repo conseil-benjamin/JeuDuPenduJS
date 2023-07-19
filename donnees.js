@@ -1,6 +1,6 @@
 let mots = ["courgette", "table", "chaise", "cucurbitacé", "argent", "espoir"];
 
-let motsCachés = [
+let motsCaches = [
   "_ _ _ _ _ _ _ _ _",
   "_ _ _ _ _",
   "_ _ _ _ _ _",
