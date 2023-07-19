@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  --colorQuartz: #bcabae;
+  background-color: var(--colorQuartz);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#textePendu{
+  padding-bottom: 2em;
+  font-size: 2rem;
+  text-align: center;
+}
+
+#btn-valider {
+  padding: 0.5em;
+  transition: 0.3s ease-in-out;
+  border-radius: 20px;
+}
+
+#btn-valider:hover {
+  color: var(--colorQuartz);
+  background-color: black;
+}
+
+#lettre {
+  width: 60%;
+  border-radius: 20px;
+  height: 2em;
+}
+
+#nbChances {
+  padding: 3em 0 0 0;
+  text-align: center;
+}
+
+#btn-Jouer {
+  height: 100px;
+  width: 200px;
+  padding: 0.5em;
+  transition: 0.3s ease-in-out;
+  border-radius: 20px;
+}
+
+#btn-jouer:hover {
+  color: var(--colorQuartz);
+  background-color: black;
+}
+
+.zoneJeu {
+  padding: 6em;
+  border: 2px solid black;
+  display: none;
+}
