@@ -45,6 +45,8 @@ function jeu(motRandom, motRandomRevele) {
 
   let nbChances = 10;
   let nbChancesElement = document.querySelector("#nbChances");
+
+  let mot = document.querySelector("#textePendu");
   // ...
 
   // ensuite on vérifie si la lettre rentré dans l'input est correcte
@@ -53,16 +55,13 @@ function jeu(motRandom, motRandomRevele) {
 
   let lettreTape = lettre.value;
   console.log(lettreTape);
-  let subStringValue = "";
 
   for (let i = 0; i < motRandomRevele.length; i++) {
-    console.log(motRandomRevele[i]);
     if (lettreTape === motRandomRevele[i]) {
-      subStringValue.substring(i, 1); //test
-      console.log(subStringValue); // test
-      motRandom[i] = motRandomRevele[i];
+      let result = motRandom.replace(motRandom[4], motRandomRevele[1]); // marche dans la fonction lancement, la régler pour cette fonction
+      mot.textContent(result); // permet d'actualiser l'affichage du mot
     } else {
-      nbChances--;
+      nbChances--; // a changer de place car probleme
     }
   }
 
