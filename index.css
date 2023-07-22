@@ -40,7 +40,7 @@ header {
 }
 
 #lettre {
-  padding: 0.1em;
+  padding: 0 0 0 1em;
   width: 60%;
   border-radius: 20px;
   height: 2em;
@@ -84,4 +84,10 @@ header {
   padding: 6em;
   border: 2px solid black;
   display: none;
+}
+
+.historique {
+  margin: 5em;
+  position: absolute;
+  right: 0;
 }

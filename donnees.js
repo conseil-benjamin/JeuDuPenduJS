@@ -8,3 +8,5 @@ let motsCaches = [
   "_ _ _ _ _ _",
   "_ _ _ _ _ _",
 ];
+
+let historique = [];
