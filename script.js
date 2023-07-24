@@ -1,4 +1,3 @@
-// commencement du jeu à l'appuie du bouton jouer et initialisation d'un mot pour le jeu
 let motGenere = false;
 
 let motRandom;
@@ -15,8 +14,15 @@ String.prototype.replaceAt = function (index, replacement) {
 };
 
 function lancement() {
+  console.log(
+    "-------------------------------------------------------------------"
+  );
+
   let zoneJeu = document.querySelector(".zoneJeu");
   zoneJeu.style.display = "block";
+
+  let historique = document.querySelector(".historique");
+  historique.style.display = "block";
 
   let btnJouer = document.querySelector("#btn-Jouer");
   btnJouer.style.display = "none";
@@ -39,10 +45,8 @@ function lancement() {
 
 function jeu(motRandom, motRandomRevele) {
   let lettre = document.querySelector("#lettre");
-  let gagne = false;
   let nbChances = 10;
   let lettreBonne = false;
-  let nbChancesElement = document.querySelector("#nbChances");
 
   let btnValider = document.querySelector("#btn-valider");
 
@@ -50,13 +54,14 @@ function jeu(motRandom, motRandomRevele) {
   // ...
   let lettreTape = lettre.value;
 
-  btnValider.disabled = false;
+  btnValider.disabled = true;
 
   lettre.addEventListener("input", () => {
     let lettreTape = lettre.value;
     verificationInput(lettreTape, btnValider);
   });
 
+  // ne marche pas pour l'instant
   // utile pour appuyer sur entrée pour valider
   btnValider.addEventListener("keypress", function (event) {
     // If the user presses the "Enter" key on the keyboard
@@ -71,8 +76,10 @@ function jeu(motRandom, motRandomRevele) {
   let btnRejouer = document.querySelector("#btn-rejouer");
 
   btnRejouer.addEventListener("click", () => {
-    lettreTape.textContent = "";
+    lettreTape.textContent = ""; // ne marche pas, la lettre ne s'enlève pas
     motGenere = false;
+    nbChances = 10;
+    historique = [];
     lancement();
   });
 
@@ -82,30 +89,48 @@ function jeu(motRandom, motRandomRevele) {
   // faire une fonction qui vérifie l'input ( pas plus d'un caractère, cela doit etre uniquement une lettre)
   // a faire
 
+  let count = 0;
   for (let i = 0; i < motEnCours.length; i++) {
     if (lettreTape === motRandomRevele[i]) {
       motEnCours = motEnCours.replaceAt(i * 2, motRandomRevele[i]); // marche également avec lettreTape
+      count++;
       lettreBonne = true;
-    } else {
-      lettreBonne = false;
     }
   }
-
-  creationHistorique(lettreTape);
   mot.textContent = motEnCours;
+  console.log(count);
 
-  // vérification si le mot écrit par l'user === motRandomRevele
-  // on vérifie si le joueur à encore une chance ou non
+  if (count === 0) {
+    lettreBonne = false;
+  } else {
+    lettreBonne = true;
+  }
+  count = 0;
+
+  console.log(isLetterUsed(lettreTape, btnValider));
+  console.log(lettreBonne);
+  creationHistorique(lettreTape);
+
+  isEndGameOrNot(btnValider, nbChances, motRandomRevele, lettreBonne);
+}
+
+function isEndGameOrNot(btnValider, nbChances, motRandomRevele, lettreBonne) {
+  let nbChancesElement = document.querySelector("#nbChances");
   let motSansEspace;
+  let gagne = false;
   motSansEspace = motEnCours.replace(/\s/g, "");
   console.log(motSansEspace);
   if (motSansEspace === motRandomRevele) {
     gagne = true;
     btnValider.disabled = true;
+    // ajouter moyen de supprimer lettre actuel de l'input
+    historique = [];
     finJeu(gagne, motRandomRevele, nbChances);
   } else if (nbChances === 0) {
     gagne = false;
     btnValider.disabled = true;
+    // ajouter moyen de supprimer lettre actuel de l'input
+    historique = [];
     finJeu(gagne, motRandomRevele, nbChances);
   } else {
     console.log("test");
@@ -123,8 +148,9 @@ function jeu(motRandom, motRandomRevele) {
 
 function finJeu(gagne, mot, nbChances) {
   if (gagne) {
-    alert(
-      "Félicitations vous avez trouvez le mot :" +
+    Swal.fire(
+      "Bien jouer !",
+      "Tu as trouver le mot" +
         " " +
         mot +
         " " +
@@ -132,12 +158,13 @@ function finJeu(gagne, mot, nbChances) {
         " " +
         (10 - nbChances) +
         " " +
-        "erreur(s)"
+        "erreurs",
+      "success"
     );
     motGenere = false;
     lancement();
   } else {
-    alert("Perdu ! Le mot était : " + " " + mot);
+    Swal.fire("Dommage !", "Le mot était : " + " " + mot);
   }
 }
 
@@ -160,13 +187,12 @@ function creationHistorique(lettreTape) {
 
   console.log(historique);
   historiqueElement.textContent =
-    "historique des lettres utilisés : " + historique.join(", ");
+    "Historique des lettres utilisés : " + historique.join(", ");
 }
 
 function verificationInput(lettreTape, btnValider) {
   btnValider.disabled = true;
 
-  // test unitaires
   if (
     !isStringOnlyLetters(lettreTape) ||
     isVoidInput(lettreTape) ||
@@ -193,13 +219,15 @@ function isStringOnlyLetters(value) {
 }
 
 function isLetterUsed(value, btnValider) {
+  let letterUse;
   for (let i = 0; i < historique.length; i++) {
     if (historique[i] === value) {
       btnValider.disabled = true;
-      return true;
+      letterUse = true;
     } else {
       btnValider.disabled = false;
-      return false;
+      letterUse = false;
     }
   }
+  return letterUse;
 }
