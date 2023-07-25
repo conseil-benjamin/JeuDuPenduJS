@@ -4,6 +4,9 @@ let motRandom;
 let indexMotRandom;
 let motRandomRevele;
 let motEnCours;
+let score = 0;
+let nbChances = 10;
+let nbMots = 0;
 
 String.prototype.replaceAt = function (index, replacement) {
   return (
@@ -18,6 +21,8 @@ function lancement() {
     "-------------------------------------------------------------------"
   );
 
+  console.log(motsCaches);
+
   let zoneJeu = document.querySelector(".zoneJeu");
   zoneJeu.style.display = "block";
 
@@ -30,11 +35,23 @@ function lancement() {
   let mot = document.querySelector("#textePendu");
 
   if (!motGenere) {
-    motRandom = motsCaches[Math.floor(Math.random() * motsCaches.length)];
-    indexMotRandom = motsCaches.indexOf(motRandom);
-    motRandomRevele = mots[indexMotRandom];
-    motEnCours = motRandom; // Initialisez le motEnCours avec le motRandom généré
-    mot.textContent = motEnCours;
+    let indexRandom = motsCaches[Math.floor(Math.random() * motsCaches.length)];
+    motRandom = indexRandom.mot;
+    let isMotGenerated = indexRandom.generated;
+    console.log(isMotGenerated);
+    if (isMotGenerated) {
+      // marche pas, ce n'est jamais vraie
+      console.log("????????????????????????????????????????????????");
+      lancement();
+    } else {
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+      indexMotRandom = motsCaches.findIndex((objet) => objet.mot === motRandom);
+      motRandomRevele = mots[indexMotRandom];
+      motEnCours = motRandom; // Initialisez le motEnCours avec le motRandom généré
+      isMotGenerated = true;
+      nbMots++;
+      mot.textContent = motEnCours;
+    }
   }
 
   console.log(motRandomRevele);
@@ -44,9 +61,8 @@ function lancement() {
 }
 
 function jeu(motRandom, motRandomRevele) {
-  let lettre = document.querySelector("#lettre");
-  let nbChances = 10;
-  let lettreBonne = false;
+  let lettre = document.querySelector("#lettre"); // faire en sorte que ce ne se remète pas à 0
+  let lettreBonne = false; // trouver un moyen de ne pas le remettre à 0
 
   let btnValider = document.querySelector("#btn-valider");
 
@@ -76,7 +92,7 @@ function jeu(motRandom, motRandomRevele) {
   let btnRejouer = document.querySelector("#btn-rejouer");
 
   btnRejouer.addEventListener("click", () => {
-    lettreTape.textContent = ""; // ne marche pas, la lettre ne s'enlève pas
+    document.querySelector("#lettre").value = "";
     motGenere = false;
     nbChances = 10;
     historique = [];
@@ -111,10 +127,10 @@ function jeu(motRandom, motRandomRevele) {
   console.log(lettreBonne);
   creationHistorique(lettreTape);
 
-  isEndGameOrNot(btnValider, nbChances, motRandomRevele, lettreBonne);
+  isEndGameOrNot(btnValider, motRandomRevele, lettreBonne);
 }
 
-function isEndGameOrNot(btnValider, nbChances, motRandomRevele, lettreBonne) {
+function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
   let nbChancesElement = document.querySelector("#nbChances");
   let motSansEspace;
   let gagne = false;
@@ -123,48 +139,57 @@ function isEndGameOrNot(btnValider, nbChances, motRandomRevele, lettreBonne) {
   if (motSansEspace === motRandomRevele) {
     gagne = true;
     btnValider.disabled = true;
-    // ajouter moyen de supprimer lettre actuel de l'input
+    document.querySelector("#lettre").value = "";
     historique = [];
-    finJeu(gagne, motRandomRevele, nbChances);
+    score++;
+    finJeu(gagne, motRandomRevele);
   } else if (nbChances === 0) {
+    console.log(
+      "wesssshhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    );
     gagne = false;
     btnValider.disabled = true;
-    // ajouter moyen de supprimer lettre actuel de l'input
+    document.querySelector("#lettre").value = "";
     historique = [];
-    finJeu(gagne, motRandomRevele, nbChances);
+    finJeu(gagne, motRandomRevele);
   } else {
     console.log("test");
     if (!lettreBonne) {
       console.log("test2");
       nbChances--;
       console.log(nbChances);
+      document.querySelector("#lettre").value = "";
       let message = "Nombres de chances : " + nbChances + "<br>Mauvaise lettre";
       document.getElementById("nbChances").innerHTML = message;
+      document.querySelector("#score").value = `Score : ${score} / ${nbMots}`;
     } else {
-      nbChancesElement.textContent = "Nombres de chance : " + nbChances;
+      console.log(score);
+      console.log(nbMots);
+      document.querySelector("#lettre").value = "";
+      document.querySelector("#score").value = `Score : ${score} / ${nbMots}`;
+      nbChancesElement.textContent = `Nombres de chance : ${nbChances}`;
     }
   }
 }
 
-function finJeu(gagne, mot, nbChances) {
+function finJeu(gagne, mot) {
   if (gagne) {
     Swal.fire(
       "Bien jouer !",
-      "Tu as trouver le mot" +
-        " " +
-        mot +
-        " " +
-        "avec" +
-        " " +
-        (10 - nbChances) +
-        " " +
-        "erreurs",
+      `Tu as trouver le mot ${mot} avec ${
+        10 - nbChances
+      } erreurs. Ton score est de ${score} / ${nbMots}`,
       "success"
     );
     motGenere = false;
+    nbChances = 10;
     lancement();
   } else {
-    Swal.fire("Dommage !", "Le mot était : " + " " + mot);
+    console.log("wessshhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+    Swal.fire("Dommage !", `Le mot était : ${mot}`, "error");
+    motGenere = false;
+    nbChances = 10;
+    lancement();
   }
 }
 
@@ -187,7 +212,7 @@ function creationHistorique(lettreTape) {
 
   console.log(historique);
   historiqueElement.textContent =
-    "Historique des lettres utilisés : " + historique.join(", ");
+    "Historique des lettres utilisés : " + historique.join(" , ");
 }
 
 function verificationInput(lettreTape, btnValider) {
@@ -219,15 +244,14 @@ function isStringOnlyLetters(value) {
 }
 
 function isLetterUsed(value, btnValider) {
-  let letterUse;
+  let count = 0;
   for (let i = 0; i < historique.length; i++) {
     if (historique[i] === value) {
       btnValider.disabled = true;
-      letterUse = true;
+      count++;
     } else {
       btnValider.disabled = false;
-      letterUse = false;
     }
   }
-  return letterUse;
+  return count > 0;
 }
