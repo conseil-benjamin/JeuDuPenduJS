@@ -1,5 +1,4 @@
 let motGenere = false;
-
 let motRandom;
 let indexMotRandom;
 let motRandomRevele;
@@ -7,6 +6,7 @@ let motEnCours;
 let score = 0;
 let nbChances = 10;
 let nbMots = 0;
+let nbMotsGenere = 0;
 
 String.prototype.replaceAt = function (index, replacement) {
   return (
@@ -20,8 +20,6 @@ function lancement() {
   console.log(
     "-------------------------------------------------------------------"
   );
-
-  console.log(motsCaches);
 
   let zoneJeu = document.querySelector(".zoneJeu");
   zoneJeu.style.display = "block";
@@ -39,8 +37,7 @@ function lancement() {
     motRandom = indexRandom.mot;
     let isMotGenerated = indexRandom.generated;
     console.log(isMotGenerated);
-    if (isMotGenerated) {
-      // marche pas, ce n'est jamais vraie
+    if (isMotGenerated && nbMotsGenere < mots.length) {
       console.log("????????????????????????????????????????????????");
       lancement();
     } else {
@@ -48,8 +45,9 @@ function lancement() {
       indexMotRandom = motsCaches.findIndex((objet) => objet.mot === motRandom);
       motRandomRevele = mots[indexMotRandom];
       motEnCours = motRandom; // Initialisez le motEnCours avec le motRandom généré
-      isMotGenerated = true;
-      nbMots++;
+      nbMotsGenere++;
+      console.log(nbMotsGenere);
+      indexRandom.generated = true;
       mot.textContent = motEnCours;
     }
   }
@@ -63,6 +61,7 @@ function lancement() {
 function jeu(motRandom, motRandomRevele) {
   let lettre = document.querySelector("#lettre"); // faire en sorte que ce ne se remète pas à 0
   let lettreBonne = false; // trouver un moyen de ne pas le remettre à 0
+  let nbChancesElement = document.querySelector("#nbChances");
 
   let btnValider = document.querySelector("#btn-valider");
 
@@ -116,18 +115,22 @@ function jeu(motRandom, motRandomRevele) {
   mot.textContent = motEnCours;
   console.log(count);
 
-  if (count === 0) {
-    lettreBonne = false;
-  } else {
-    lettreBonne = true;
-  }
+  // opération ternaire
+  count === 0 ? (lettreBonne = false) : (lettreBonne = true);
+
   count = 0;
 
   console.log(isLetterUsed(lettreTape, btnValider));
   console.log(lettreBonne);
   creationHistorique(lettreTape);
 
-  isEndGameOrNot(btnValider, motRandomRevele, lettreBonne);
+  // affichage des différents paragraphes
+  nbChancesElement.textContent = `Nombres de chance : ${nbChances}`;
+  document.querySelector("#score").innerHTML = `Score : ${score} / ${nbMots}`;
+
+  isVoidInput(lettreTape)
+    ? console.log("Début")
+    : isEndGameOrNot(btnValider, motRandomRevele, lettreBonne);
 }
 
 function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
@@ -144,9 +147,6 @@ function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
     score++;
     finJeu(gagne, motRandomRevele);
   } else if (nbChances === 0) {
-    console.log(
-      "wesssshhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
-    );
     gagne = false;
     btnValider.disabled = true;
     document.querySelector("#lettre").value = "";
@@ -161,18 +161,23 @@ function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
       document.querySelector("#lettre").value = "";
       let message = "Nombres de chances : " + nbChances + "<br>Mauvaise lettre";
       document.getElementById("nbChances").innerHTML = message;
-      document.querySelector("#score").value = `Score : ${score} / ${nbMots}`;
+      document.querySelector(
+        "#score"
+      ).innerHTML = `Score : ${score} / ${nbMots}`;
     } else {
       console.log(score);
       console.log(nbMots);
       document.querySelector("#lettre").value = "";
-      document.querySelector("#score").value = `Score : ${score} / ${nbMots}`;
+      document.querySelector(
+        "#score"
+      ).innerHTML = `Score : ${score} / ${nbMots}`;
       nbChancesElement.textContent = `Nombres de chance : ${nbChances}`;
     }
   }
 }
 
 function finJeu(gagne, mot) {
+  nbMots++;
   if (gagne) {
     Swal.fire(
       "Bien jouer !",
@@ -185,7 +190,6 @@ function finJeu(gagne, mot) {
     nbChances = 10;
     lancement();
   } else {
-    console.log("wessshhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
     Swal.fire("Dommage !", `Le mot était : ${mot}`, "error");
     motGenere = false;
     nbChances = 10;
@@ -235,7 +239,7 @@ function isVoidInput(value) {
 }
 
 function isOnlyOneCharacter(value) {
-  return value.length <= 1;
+  return value.length === 1;
 }
 
 function isStringOnlyLetters(value) {
