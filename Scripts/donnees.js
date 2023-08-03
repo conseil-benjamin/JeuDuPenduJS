@@ -302,231 +302,277 @@ let motsCaches = [
   {
     mot: "_ _ _ _ _ _ _ _", // courgette
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _", // table
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _", // chaise
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _ _ _ _ _", // cucurbitace
     generated: false,
+    difficulty: "difficile",
   },
 
   {
     mot: "_ _ _ _ _ _", // argent
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _", // espoir
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _", // pomme
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _", // orange
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _", // soleil
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _", // voiture
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _ _ _ _", // ordinateur
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _", // stylo
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _", // chemise
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _", // maison
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _ _ _", // bouteille
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _", // fenetre
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _", // plante
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _ _", // montagne
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _", // paysage
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _ _", // vacances
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _ _ _ _", // restaurant
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _", // avion
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _", // cuisine
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _", // bureau
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _", // livre
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _", // musique
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _", // film
     generated: false,
+    difficulty: "moyen",
   },
 
   {
     mot: "_ _ _", // eau
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _", // feu
     generated: false,
+    difficulty: "moyen",
   },
 
   {
     mot: "_ _ _ _ _", // terre
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _", // air
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _", // animal
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _", // cadeau
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _ _ _", // telephone
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _", // horloge
     generated: false,
+    difficulty: "moyen",
   },
 
   {
     mot: "_ _ _ _ _ _", // miroir
     generated: false,
+    difficulty: "moyen",
   },
 
   {
     mot: "_ _ _ _ _ _ _ _", // internet
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _", // jardin
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _", // parc
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _", // ecole
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _ _ _ _", // football
     generated: false,
+    difficulty: "moyen",
   },
 
   {
     mot: "_ _ _ _ _ _ _ _ _ _", // basketball
     generated: false,
+    difficulty: "moyen",
   },
 
   {
     mot: "_ _ _ _", // velo
     generated: false,
+    difficulty: "moyen",
   },
 
   {
     mot: "_ _ _ _ _ _", // bateau
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _", // train
     generated: false,
+    difficulty: "facile",
   },
 
   {
     mot: "_ _ _ _ _", // photo
     generated: false,
+    difficulty: "moyen",
   },
 
   // BON JUSQUA ICIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
@@ -1212,7 +1258,7 @@ let motsCaches = [
   },
 
   {
-    mot: "_ _ _ _ _ _ _ _ _ _ _ _", // rhinoceros
+    mot: "_ _ _ _ _ _ _ _ _ _", // rhinoceros
     generated: false,
   },
 
