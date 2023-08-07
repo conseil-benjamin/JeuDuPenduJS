@@ -1,4 +1,4 @@
-fetch("Donnees/donnees.json")
+fetch("/JeuDuPenduJS/Donnees/donnees.json")
   .then((response) => response.json())
   .then((motsJson) => {
     // Ici, vous pouvez utiliser les données JSON (motsJson)
@@ -32,14 +32,16 @@ String.prototype.replaceAt = function (index, replacement) {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  let images = document.querySelector("#image");
   let btnRejouer = document.querySelector("#btn-rejouer");
 
   if (btnRejouer) {
     btnRejouer.addEventListener("click", () => {
       document.querySelector("#lettre").value = "";
       motGenere = false;
-      nbChances = 10;
+      nbChances = 8;
       historique = [];
+      images.src = "/JeuDuPenduJS/images/start.png";
       lancement();
     });
   } else {
@@ -94,8 +96,8 @@ function lancement() {
 }
 
 function jeu(motRandom, motRandomRevele) {
-  let lettre = document.querySelector("#lettre"); // faire en sorte que ce ne se remète pas à 0
-  let lettreBonne = false; // trouver un moyen de ne pas le remettre à 0
+  let lettre = document.querySelector("#lettre");
+  let lettreBonne = false;
   let nbChancesElement = document.querySelector("#nbChances");
   let btnValider = document.querySelector("#btn-valider");
   let mot = document.querySelector("#textePendu");
@@ -110,13 +112,9 @@ function jeu(motRandom, motRandomRevele) {
   });
 
   // ne marche pas pour l'instant
-  // utile pour appuyer sur entrée pour valider
   btnValider.addEventListener("keypress", function (event) {
-    // If the user presses the "Enter" key on the keyboard
     if (event.key === "Enter") {
-      // Cancel the default action, if needed
       event.preventDefault();
-      // Trigger the button element with a click
       document.getElementById("myBtn").click();
     }
   });
@@ -160,6 +158,7 @@ function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
     ? ((gagne = false), finJeu(gagne, motRandomRevele, btnValider))
     : !lettreBonne
     ? (nbChances--,
+      generatedImages(),
       // implémenter if (nbChances === 0) pour regler probleme de nb erreurs
       (message = "Nombres de chances : " + nbChances + "<br>Mauvaise lettre"),
       (document.getElementById("nbChances").innerHTML = message))
@@ -167,22 +166,24 @@ function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
 }
 
 function finJeu(gagne, mot, btnValider) {
+  let images = document.querySelector("#image");
   nbMots++;
   historique = [];
   btnValider.disabled = true;
   motGenere = false;
-  nbChances = 10;
+  nbChances = 8;
   if (gagne) {
     Swal.fire(
       "Bien jouer !",
       `Tu as trouver le mot ${mot} avec ${
-        10 - nbChances
+        8 - nbChances
       } erreurs. Ton score est de ${score} / ${nbMots}`,
       "success"
     );
   } else {
     Swal.fire("Dommage !", `Le mot était : ${mot}`, "error");
   }
+  images.src = "/JeuDuPenduJS/images/start.png";
   lancement();
 }
 
@@ -206,6 +207,39 @@ function creationHistorique(lettreTape) {
   console.log(historique);
   historiqueElement.textContent =
     "Historique des lettres utilisés : " + historique.join(" , ");
+}
+
+function generatedImages() {
+  let images = document.querySelector("#image");
+  switch (nbChances) {
+    case 8:
+      // mettre l'image de début
+      images.src = "/JeuDuPenduJS/images/poteau2.png";
+      break;
+    case 7:
+      images.src = "/JeuDuPenduJS/images/poteau3.png";
+      break;
+    case 6:
+      images.src = "/JeuDuPenduJS/images/poteau4.png";
+      break;
+    case 5:
+      images.src = "/JeuDuPenduJS/images/poteau5.png";
+      break;
+    case 4:
+      images.src = "/JeuDuPenduJS/images/poteau6.png";
+      break;
+    case 3:
+      images.src = "/JeuDuPenduJS/images/poteau7.png";
+      break;
+    case 2:
+      images.src = "/JeuDuPenduJS/images/poteau8.png";
+      break;
+    case 1:
+      images.src = "/JeuDuPenduJS/images/poteau9.png";
+      break;
+
+    //...
+  }
 }
 
 function verificationInput(lettreTape, btnValider) {

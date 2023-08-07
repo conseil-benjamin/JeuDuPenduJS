@@ -1,7 +1,2088 @@
 [
   {
-    "mot": "salut",
+    "word": "courgette",
+    "mask": "---------",
+    "difficulty": "moyen",
     "generated": false,
-    "difficulty": "easy"
+    "clue": "Légume vert de forme allongée"
+  },
+  {
+    "word": "table",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Meuble avec une surface plane"
+  },
+  {
+    "word": "chaise",
+    "mask": "------",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Siège à dossier et à quatre pieds"
+  },
+  {
+    "word": "cucurbitace",
+    "mask": "-----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Famille de plantes rampantes"
+  },
+  {
+    "word": "argent",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Métal précieux utilisé comme monnaie"
+  },
+  {
+    "word": "espoir",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Sentiment positif pour l'avenir"
+  },
+  {
+    "word": "pomme",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Fruit rond et croquant"
+  },
+  {
+    "word": "orange",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Fruit juteux de couleur vive"
+  },
+  {
+    "word": "soleil",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Étoile qui illumine la journée"
+  },
+  {
+    "word": "voiture",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Véhicule à moteur pour le transport"
+  },
+  {
+    "word": "ordinateur",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Appareil électronique pour le traitement de l'information"
+  },
+  {
+    "word": "stylo",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Instrument d'écriture"
+  },
+  {
+    "word": "chemise",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Vêtement à manches pour le haut du corps"
+  },
+  {
+    "word": "maison",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Lieu de résidence"
+  },
+  {
+    "word": "bouteille",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Récipient en verre ou en plastique"
+  },
+  {
+    "word": "fenetre",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Ouverture dans un mur pour laisser entrer la lumière"
+  },
+  {
+    "word": "plante",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Être vivant qui pousse et produit des feuilles"
+  },
+  {
+    "word": "montagne",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Élévation naturelle du terrain"
+  },
+  {
+    "word": "paysage",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Vue d'une étendue de terre"
+  },
+  {
+    "word": "vacances",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Période de repos et de loisirs"
+  },
+  {
+    "word": "restaurant",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Lieu où l'on peut manger et boire"
+  },
+  {
+    "word": "avion",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Moyen de transport aérien"
+  },
+  {
+    "word": "cuisine",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Pièce où l'on prépare les repas"
+  },
+  {
+    "word": "bureau",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Espace de travail avec un bureau"
+  },
+  {
+    "word": "livre",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Ensemble de pages reliées"
+  },
+  {
+    "word": "musique",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Art des sons organisés"
+  },
+  {
+    "word": "film",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Œuvre cinématographique"
+  },
+  {
+    "word": "eau",
+    "mask": "---",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Substance essentielle à la vie"
+  },
+  {
+    "word": "feu",
+    "mask": "---",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Chaleur et lumière produites par la combustion"
+  },
+  {
+    "word": "terre",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Planète où nous vivons"
+  },
+  {
+    "word": "air",
+    "mask": "---",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Mélange de gaz qui entoure la Terre"
+  },
+  {
+    "word": "animal",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Être vivant non végétal"
+  },
+  {
+    "word": "cadeau",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Objet offert pour une occasion"
+  },
+  {
+    "word": "telephone",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Appareil de communication sans fil"
+  },
+  {
+    "word": "horloge",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Instrument pour mesurer le temps"
+  },
+  {
+    "word": "miroir",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Surface réfléchissante pour voir son reflet"
+  },
+  {
+    "word": "internet",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Réseau mondial de communication"
+  },
+  {
+    "word": "jardin",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Espace extérieur planté de végétaux"
+  },
+  {
+    "word": "parc",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Espace vert de loisirs"
+  },
+  {
+    "word": "ecole",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Établissement d'enseignement"
+  },
+  {
+    "word": "football",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Sport collectif joué avec un ballon"
+  },
+  {
+    "word": "basketball",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Sport avec un ballon et un panier"
+  },
+  {
+    "word": "velo",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Deux-roues à pédale"
+  },
+  {
+    "word": "bateau",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Embarcation pour naviguer sur l'eau"
+  },
+  {
+    "word": "train",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Moyen de transport sur rails"
+  },
+  {
+    "word": "photo",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Image capturée par un appareil photo"
+  },
+  {
+    "word": "carte",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Représentation graphique d'un lieu"
+  },
+  {
+    "word": "souris",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Petit rongeur ou périphérique d'ordinateur"
+  },
+  {
+    "word": "clavier",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Périphérique d'ordinateur pour saisir du texte"
+  },
+  {
+    "word": "chemin",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Voie pour se déplacer à pied ou en véhicule"
+  },
+  {
+    "word": "piscine",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Bassin d'eau pour la baignade"
+  },
+  {
+    "word": "piano",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Instrument de musique à touches"
+  },
+  {
+    "word": "guitare",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Instrument à cordes pincées"
+  },
+  {
+    "word": "violin",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Instrument à cordes frottées"
+  },
+  {
+    "word": "frere",
+    "mask": "-----",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Garçon ayant le même parent"
+  },
+  {
+    "word": "soeur",
+    "mask": "-----",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Fille ayant le même parent"
+  },
+  {
+    "word": "mere",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Parent féminin"
+  },
+  {
+    "word": "pere",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Parent masculin"
+  },
+  {
+    "word": "grand-mere",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Parent de vos parents"
+  },
+  {
+    "word": "grand-pere",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Parent de vos parents"
+  },
+  {
+    "word": "bebe",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Nouveau-né"
+  },
+  {
+    "word": "adolescent",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Personne entre l'enfance et l'âge adulte"
+  },
+  {
+    "word": "adulte",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Personne mature"
+  },
+  {
+    "word": "homme",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Être humain de sexe masculin"
+  },
+  {
+    "word": "femme",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Être humain de sexe féminin"
+  },
+  {
+    "word": "chaussure",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Accessoire pour les pieds"
+  },
+  {
+    "word": "pantalon",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Vêtement pour les jambes"
+  },
+  {
+    "word": "robe",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Vêtement féminin"
+  },
+  {
+    "word": "jupe",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Vêtement féminin"
+  },
+  {
+    "word": "bottes",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Chaussures montantes"
+  },
+  {
+    "word": "chapeau",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Accessoire pour la tête"
+  },
+  {
+    "word": "bracelet",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Bijou pour le poignet"
+  },
+  {
+    "word": "collier",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Bijou pour le cou"
+  },
+  {
+    "word": "bague",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Bijou pour les doigts"
+  },
+  {
+    "word": "cuivre",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Métal de couleur rougeâtre"
+  },
+  {
+    "word": "verre",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Matériau transparent"
+  },
+  {
+    "word": "bois",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Matériau naturel provenant des arbres"
+  },
+  {
+    "word": "plastique",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Matériau synthétique"
+  },
+  {
+    "word": "pierre",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Matériau solide et minéral"
+  },
+  {
+    "word": "carton",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Matériau léger et rigide"
+  },
+  {
+    "word": "metal",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Matériau dur et résistant"
+  },
+  {
+    "word": "velours",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Tissu doux et lisse au toucher"
+  },
+  {
+    "word": "soie",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Fibre naturelle brillante"
+  },
+  {
+    "word": "coton",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Fibre végétale utilisée pour le tissage"
+  },
+  {
+    "word": "laine",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Fibre animale pour le tricotage"
+  },
+  {
+    "word": "poisson",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Animal aquatique"
+  },
+  {
+    "word": "viande",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Tissu musculaire d'animaux"
+  },
+  {
+    "word": "legume",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Plante comestible"
+  },
+  {
+    "word": "fruit",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Produit végétal sucré"
+  },
+  {
+    "word": "fromage",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Produit laitier fermenté"
+  },
+  {
+    "word": "pain",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Aliment de base cuit au four"
+  },
+  {
+    "word": "gateau",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Dessert sucré"
+  },
+  {
+    "word": "chocolat",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Douceur sucrée à base de cacao"
+  },
+  {
+    "word": "vin",
+    "mask": "---",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Boisson alcoolisée fermentée"
+  },
+  {
+    "word": "biere",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Boisson alcoolisée"
+  },
+  {
+    "word": "cafe",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Boisson chaude stimulante"
+  },
+  {
+    "word": "the",
+    "mask": "---",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Boisson chaude"
+  },
+  {
+    "word": "eau",
+    "mask": "---",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Substance essentielle à la vie"
+  },
+  {
+    "word": "lait",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Liquide nutritif produit par les mammifères"
+  },
+  {
+    "word": "soupe",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Plat liquide à base d'ingrédients variés"
+  },
+  {
+    "word": "sel",
+    "mask": "---",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Minéral utilisé pour assaisonner"
+  },
+  {
+    "word": "sucre",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Substance sucrée utilisée comme édulcorant"
+  },
+  {
+    "word": "huile",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Liquide gras extrait de matières végétales ou animales"
+  },
+  {
+    "word": "poivre",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Épice utilisée pour assaisonner les plats"
+  },
+  {
+    "word": "miel",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Substance sucrée produite par les abeilles"
+  },
+  {
+    "word": "ketchup",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Sauce à base de tomates et d'épices"
+  },
+  {
+    "word": "mayonnaise",
+    "mask": "-----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Sauce émulsionnée à base d'œufs et d'huile"
+  },
+  {
+    "word": "sandwich",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "En-cas composé de plusieurs ingrédients entre deux tranches de pain"
+  },
+  {
+    "word": "pizza",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Plat italien composé de pâte, de sauce et de garniture"
+  },
+  {
+    "word": "hamburger",
+    "mask": "-----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Sandwich avec un steak haché"
+  },
+  {
+    "word": "frites",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Bâtonnets de pommes de terre frits"
+  },
+  {
+    "word": "salade",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Plat composé d'ingrédients variés, souvent crus"
+  },
+  {
+    "word": "glace",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Dessert glacé sucré"
+  },
+  {
+    "word": "bonbon",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Confiserie sucrée"
+  },
+  {
+    "word": "chips",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Tranches fines et croustillantes d'aliments frits"
+  },
+  {
+    "word": "noix",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Fruit à coque"
+  },
+  {
+    "word": "raisin",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Petit fruit rond et sucré"
+  },
+  {
+    "word": "banane",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Fruit allongé à la peau jaune"
+  },
+  {
+    "word": "poire",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Fruit à la forme arrondie"
+  },
+  {
+    "word": "cerise",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Petit fruit rouge à noyau"
+  },
+  {
+    "word": "fraise",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Petit fruit rouge et sucré"
+  },
+  {
+    "word": "framboise",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Petit fruit rouge foncé"
+  },
+  {
+    "word": "kiwi",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Petit fruit à la peau marron et à l'intérieur vert"
+  },
+  {
+    "word": "avocat",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Fruit à la peau verte et à la chair crémeuse"
+  },
+  {
+    "word": "tomate",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Fruit rouge souvent utilisé comme légume"
+  },
+  {
+    "word": "carotte",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Racine orange utilisée comme légume"
+  },
+  {
+    "word": "concombre",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Légume vert utilisé dans les salades"
+  },
+  {
+    "word": "aubergine",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Légume violet en forme de poire"
+  },
+  {
+    "word": "poivron",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Légume de différentes couleurs, souvent utilisé dans la cuisine"
+  },
+  {
+    "word": "oignon",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Légume à l'odeur forte et piquante"
+  },
+  {
+    "word": "ail",
+    "mask": "---",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Bulbe au goût piquant utilisé en cuisine"
+  },
+  {
+    "word": "brocoli",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Légume vert en forme de petits arbres"
+  },
+  {
+    "word": "champignon",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Organisme fongique comestible"
+  },
+  {
+    "word": "patate",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Légume tuberculeux, souvent frit ou cuit au four"
+  },
+  {
+    "word": "haricot",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Légume vert allongé"
+  },
+  {
+    "word": "petit pois",
+    "mask": "------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Petit légume vert rond"
+  },
+  {
+    "word": "mais",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Grain jaune en rangées sur une tige"
+  },
+  {
+    "word": "ble",
+    "mask": "---",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Céréale utilisée pour faire de la farine"
+  },
+  {
+    "word": "riz",
+    "mask": "---",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Grain souvent utilisé comme base de l'alimentation"
+  },
+  {
+    "word": "pates",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Aliment fait à partir de farine et d'eau"
+  },
+  {
+    "word": "pain",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Aliment de base cuit au four"
+  },
+  {
+    "word": "baguette",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Pain long et croustillant"
+  },
+  {
+    "word": "croissant",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Pâtisserie en forme de croissant"
+  },
+  {
+    "word": "gateau",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Dessert sucré"
+  },
+  {
+    "word": "tarte",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Pâtisserie sucrée ou salée avec une croûte"
+  },
+  {
+    "word": "crepe",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Pâte fine cuite à la poêle"
+  },
+  {
+    "word": "gaufre",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Pâtisserie en forme de grille"
+  },
+  {
+    "word": "biscuit",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Petit gâteau sec"
+  },
+  {
+    "word": "chocolatine",
+    "mask": "-----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Pâtisserie feuilletée au chocolat"
+  },
+  {
+    "word": "sucette",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Bonbon fixé sur un bâtonnet"
+  },
+  {
+    "word": "chocolat",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Douceur sucrée à base de cacao"
+  },
+  {
+    "word": "barbe a papa",
+    "mask": "---------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Friandise filée et sucrée"
+  },
+  {
+    "word": "glace",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Dessert glacé sucré"
+  },
+  {
+    "word": "yaourt",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Produit laitier fermenté"
+  },
+  {
+    "word": "creme brulee",
+    "mask": "----------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Dessert à la crème cuite et caramélisée"
+  },
+  {
+    "word": "riz au lait",
+    "mask": "------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Dessert à base de riz cuit dans du lait"
+  },
+  {
+    "word": "salade de fruits",
+    "mask": "-----------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Mélange de fruits frais"
+  },
+  {
+    "word": "confiture",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Fruit cuit avec du sucre"
+  },
+  {
+    "word": "miel",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Substance sucrée produite par les abeilles"
+  },
+  {
+    "word": "sirop",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Liquide sucré souvent utilisé sur les crêpes"
+  },
+  {
+    "word": "jus",
+    "mask": "---",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Liquide extrait de fruits ou de légumes"
+  },
+  {
+    "word": "soda",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Boisson gazeuse"
+  },
+  {
+    "word": "limonade",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Boisson sucrée au goût de citron"
+  },
+  {
+    "word": "biere",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Boisson alcoolisée"
+  },
+  {
+    "word": "vin",
+    "mask": "---",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Boisson alcoolisée fermentée à base de raisins"
+  },
+  {
+    "word": "cafe",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Boisson chaude obtenue à partir de grains de café"
+  },
+  {
+    "word": "the",
+    "mask": "---",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Infusion de feuilles de thé"
+  },
+  {
+    "word": "eau",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Liquide vital pour les êtres vivants"
+  },
+  {
+    "word": "cappuccino",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Café avec de la mousse de lait"
+  },
+  {
+    "word": "latte",
+    "mask": "-----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Café au lait"
+  },
+  {
+    "word": "espresso",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Café court et fort"
+  },
+  {
+    "word": "americano",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Café allongé"
+  },
+  {
+    "word": "macchiato",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Café avec une touche de lait"
+  },
+  {
+    "word": "mocaccino",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Café au chocolat"
+  },
+  {
+    "word": "chai",
+    "mask": "----",
+    "difficulty": "facile",
+    "generated": false,
+    "clue": "Thé épicé originaire d'Inde"
+  },
+  {
+    "word": "infusion",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Liquide obtenu en laissant tremper des plantes dans de l'eau chaude"
+  },
+  {
+    "word": "camomille",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Plante souvent utilisée pour faire une tisane apaisante"
+  },
+  {
+    "word": "menthe",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Herbe aromatique souvent utilisée pour les infusions"
+  },
+  {
+    "word": "cryptogramme",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Message secret chiffré"
+  },
+  {
+    "word": "elucubration",
+    "mask": "---------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Réflexion abstraite et peu réaliste"
+  },
+  {
+    "word": "xylophone",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Instrument de musique à percussion"
+  },
+  {
+    "word": "hippopotame",
+    "mask": "---------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Gros mammifère amphibie d'Afrique"
+  },
+  {
+    "word": "rhinoceros",
+    "mask": "---------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Gros mammifère herbivore à corne"
+  },
+  {
+    "word": "imperatif",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Mode verbal exprimant un ordre"
+  },
+  {
+    "word": "inquisiteur",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Personne qui pose des questions pour obtenir des informations"
+  },
+  {
+    "word": "obscurite",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Absence de lumière"
+  },
+  {
+    "word": "quadriceps",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Groupe musculaire de la cuisse"
+  },
+  {
+    "word": "luminosite",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Niveau de lumière"
+  },
+  {
+    "word": "volumineux",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "De grande taille"
+  },
+  {
+    "word": "xyloglotte",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Personne qui écrit sur du bois"
+  },
+  {
+    "word": "exacerber",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Aggraver, intensifier"
+  },
+  {
+    "word": "pantomime",
+    "mask": "------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Représentation silencieuse par gestes"
+  },
+  {
+    "word": "dactylographie",
+    "mask": "------------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Art de taper à la machine"
+  },
+  {
+    "word": "paleontologie",
+    "mask": "-----------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Étude des êtres vivants du passé"
+  },
+  {
+    "word": "capricieux",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Changeant d'humeur rapidement"
+  },
+  {
+    "word": "embryonnaire",
+    "mask": "----------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Relatif à un stade précoce de développement"
+  },
+  {
+    "word": "mystificateur",
+    "mask": "------------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Personne qui cherche à tromper ou à mystifier"
+  },
+  {
+    "word": "perpendiculaire",
+    "mask": "------------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Forme un angle de 90 degrés"
+  },
+  {
+    "word": "sycophante",
+    "mask": "------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Flatteur intéressé"
+  },
+  {
+    "word": "tympanoplastie",
+    "mask": "------------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Chirurgie de l'oreille moyenne"
+  },
+  {
+    "word": "odontalgique",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Relatif aux douleurs dentaires"
+  },
+  {
+    "word": "effervescent",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Qui produit des bulles de gaz"
+  },
+  {
+    "word": "zigzagant",
+    "mask": "-----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Allant en zigzag"
+  },
+  {
+    "word": "expansion",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Action de s'étendre"
+  },
+  {
+    "word": "chevauchement",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Action de se superposer partiellement"
+  },
+  {
+    "word": "mystere",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Chose maske ou inconnue"
+  },
+  {
+    "word": "tenebreux",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Sombre, obscur"
+  },
+  {
+    "word": "sensation",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Perception par les sens"
+  },
+  {
+    "word": "revolver",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Arme à feu à barillet"
+  },
+  {
+    "word": "ascenseur",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Appareil pour monter ou descendre entre les étages"
+  },
+  {
+    "word": "meurtre",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Homicide volontaire"
+  },
+  {
+    "word": "espion",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Agent secret"
+  },
+  {
+    "word": "conspiration",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Plan secret pour commettre un acte illégal"
+  },
+  {
+    "word": "complot",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Plan secret souvent malveillant"
+  },
+  {
+    "word": "traque",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Poursuite persistante"
+  },
+  {
+    "word": "disparition",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Action de ne plus être visible"
+  },
+  {
+    "word": "enchanteur",
+    "mask": "------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Magicien ou sorcier"
+  },
+  {
+    "word": "ensorceler",
+    "mask": "-------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Jetter un sort magique"
+  },
+  {
+    "word": "apparition",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Action de se montrer soudainement"
+  },
+  {
+    "word": "fantome",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Esprit d'une personne décédée"
+  },
+  {
+    "word": "pharaon",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Roi de l'Égypte antique"
+  },
+  {
+    "word": "delicieux",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Très bon au goût"
+  },
+  {
+    "word": "assassin",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Tueur à gages"
+  },
+  {
+    "word": "trebuchement",
+    "mask": "-------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Action de trébucher"
+  },
+  {
+    "word": "fantastique",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Hors du commun, merveilleux"
+  },
+  {
+    "word": "corbeille",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Contenant pour déchets"
+  },
+  {
+    "word": "cylindre",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Forme géométrique allongée"
+  },
+  {
+    "word": "mystique",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Relatif au mysticisme"
+  },
+  {
+    "word": "phobie",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Peur intense irrationnelle"
+  },
+  {
+    "word": "crepuscule",
+    "mask": "-------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Période entre le jour et la nuit"
+  },
+  {
+    "word": "crepuscule",
+    "mask": "-------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Période entre le jour et la nuit"
+  },
+  {
+    "word": "sulfureux",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Qui contient du soufre, odorant"
+  },
+  {
+    "word": "regarder",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Observer avec les yeux"
+  },
+  {
+    "word": "fleuve",
+    "mask": "------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Cours d'eau important"
+  },
+  {
+    "word": "catastrophe",
+    "mask": "---------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Événement tragique et destructeur"
+  },
+  {
+    "word": "clandestin",
+    "mask": "------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Secret et illégal"
+  },
+  {
+    "word": "subversif",
+    "mask": "------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Qui cherche à renverser l'ordre établi"
+  },
+  {
+    "word": "plaisir",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Sensation agréable"
+  },
+  {
+    "word": "symptome",
+    "mask": "------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Signe d'une maladie"
+  },
+  {
+    "word": "suspicion",
+    "mask": "-------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Doute, méfiance"
+  },
+  {
+    "word": "versatile",
+    "mask": "-------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Capable de s'adapter à différentes situations"
+  },
+  {
+    "word": "excentrique",
+    "mask": "----------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Hors de l'ordinaire"
+  },
+  {
+    "word": "acquiescer",
+    "mask": "-------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Donner son accord, consentir"
+  },
+  {
+    "word": "fantomatique",
+    "mask": "----------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Qui a l'apparence d'un fantôme"
+  },
+  {
+    "word": "revolution",
+    "mask": "-----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Renversement complet d'une situation"
+  },
+  {
+    "word": "agrandissement",
+    "mask": "-------------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Action d'augmenter en taille"
+  },
+  {
+    "word": "renovation",
+    "mask": "-------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Action de rénover, de remettre à neuf"
+  },
+  {
+    "word": "clavicule",
+    "mask": "------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Os situé entre le sternum et l'omoplate"
+  },
+  {
+    "word": "pelerinage",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Voyage religieux vers un lieu saint"
+  },
+  {
+    "word": "effritement",
+    "mask": "---------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Action de se détériorer en petits morceaux"
+  },
+  {
+    "word": "bouleversement",
+    "mask": "-------------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Changement profond et perturbant"
+  },
+  {
+    "word": "enthousiasme",
+    "mask": "---------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "État d'excitation et d'ardeur"
+  },
+  {
+    "word": "panoramique",
+    "mask": "----------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Offre une vue large"
+  },
+  {
+    "word": "exceptionnel",
+    "mask": "----------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Qui sort de l'ordinaire"
+  },
+  {
+    "word": "antagoniste",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Personnage opposé au protagoniste"
+  },
+  {
+    "word": "meconnu",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Peu connu, ignoré"
+  },
+  {
+    "word": "enigmatique",
+    "mask": "----------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Mystérieux, difficile à comprendre"
+  },
+  {
+    "word": "rectangulaire",
+    "mask": "-----------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Ayant la forme d'un rectangle"
+  },
+  {
+    "word": "assouplissement",
+    "mask": "---------------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Action de rendre plus souple"
+  },
+  {
+    "word": "ultrasonore",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Au-delà de la fréquence audible par l'oreille humaine"
+  },
+  {
+    "word": "sculpture",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Œuvre d'art en trois dimensions"
+  },
+  {
+    "word": "dentifrice",
+    "mask": "------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Produit utilisé pour le nettoyage des dents"
+  },
+  {
+    "word": "aspirateur",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Appareil pour nettoyer la poussière"
+  },
+  {
+    "word": "ephemere",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "De courte durée, passager"
+  },
+  {
+    "word": "transformer",
+    "mask": "-------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Changer de forme ou de nature"
+  },
+  {
+    "word": "subvention",
+    "mask": "-----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Aide financière"
+  },
+  {
+    "word": "calculatrice",
+    "mask": "-------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Appareil pour effectuer des calculs"
+  },
+  {
+    "word": "independant",
+    "mask": "-------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Qui agit librement, autonome"
+  },
+  {
+    "word": "diagonale",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Ligne reliant deux angles non adjacents"
+  },
+  {
+    "word": "reglement",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Ensemble de règles"
+  },
+  {
+    "word": "libellule",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Insecte volant aux ailes transparentes"
+  },
+  {
+    "word": "mandarine",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Petit agrume orange"
+  },
+  {
+    "word": "ecologiste",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Défenseur de l'environnement"
+  },
+  {
+    "word": "geometrie",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Étude des formes et des figures"
+  },
+  {
+    "word": "theologie",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Étude des questions religieuses"
+  },
+  {
+    "word": "oligarchie",
+    "mask": "-----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Pouvoir aux mains de quelques-uns"
+  },
+  {
+    "word": "gladiateur",
+    "mask": "------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Combattant dans l'arène romaine"
+  },
+  {
+    "word": "veritable",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Véritable, authentique"
+  },
+  {
+    "word": "sorcier",
+    "mask": "-------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Magicien, personne qui pratique la sorcellerie"
+  },
+  {
+    "word": "vegetarien",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Personne qui ne mange pas de viande"
+  },
+  {
+    "word": "catacombe",
+    "mask": "-------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Galerie souterraine, souvent utilisée comme lieu de sépulture"
+  },
+  {
+    "word": "transformation",
+    "mask": "------------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Action de changer de forme ou de nature"
+  },
+  {
+    "word": "paradoxal",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Contraire à l'attente, à la logique"
+  },
+  {
+    "word": "clandestinite",
+    "mask": "------------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "État de ce qui est mask, secret"
+  },
+  {
+    "word": "ressusciter",
+    "mask": "--------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Faire revivre après la mort"
+  },
+  {
+    "word": "temperament",
+    "mask": "-------------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Disposition naturelle, caractère"
+  },
+  {
+    "word": "cryptographie",
+    "mask": "-----------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Science des codes secrets"
+  },
+  {
+    "word": "imaginaire",
+    "mask": "-----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Qui existe dans l'esprit, pas dans la réalité"
+  },
+  {
+    "word": "climatisation",
+    "mask": "-----------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Système de refroidissement de l'air"
+  },
+  {
+    "word": "fragmentation",
+    "mask": "-------------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Action de diviser en morceaux"
+  },
+  {
+    "word": "insolite",
+    "mask": "---------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Hors de l'ordinaire, inhabituel"
+  },
+  {
+    "word": "coriace",
+    "mask": "--------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Dur, résistant"
+  },
+  {
+    "word": "loufoque",
+    "mask": "----------",
+    "difficulty": "moyen",
+    "generated": false,
+    "clue": "Excentrique, bizarre"
+  },
+  {
+    "word": "transcendance",
+    "mask": "-----------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "État au-delà des limites normales"
+  },
+  {
+    "word": "enigmatique",
+    "mask": "----------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Mystérieux, difficile à comprendre"
+  },
+  {
+    "word": "indispensable",
+    "mask": "-------------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Nécessaire, incontournable"
+  },
+  {
+    "word": "exponentiellement",
+    "mask": "---------------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "De manière exponentielle, en croissance rapide"
+  },
+  {
+    "word": "triomphalement",
+    "mask": "-------------------",
+    "difficulty": "difficile",
+    "generated": false,
+    "clue": "Avec triomphe, de manière victorieuse"
   }
 ]

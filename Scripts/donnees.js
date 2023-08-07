@@ -303,6 +303,7 @@ let motsCaches = [
     mot: "_ _ _ _ _ _ _ _", // courgette
     generated: false,
     difficulty: "facile",
+    // clue : legume
   },
 
   {

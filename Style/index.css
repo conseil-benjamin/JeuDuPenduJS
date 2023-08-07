@@ -69,8 +69,14 @@ header {
   background-color: black;
 }
 
+.btn-rejouer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em;
+}
+
 #btn-rejouer {
-  margin: 3em 0 0 6.5em;
   height: 40px;
   width: 70px;
   padding: 0.5em;
@@ -99,4 +105,14 @@ header {
 #score {
   padding: 2em 0 0 0;
   text-align: center;
+}
+
+.images {
+  display: flex;
+  justify-content: center;
+  padding: 1.5em 0 0 0;
+}
+
+#image {
+  border-radius: 15px;
 }
