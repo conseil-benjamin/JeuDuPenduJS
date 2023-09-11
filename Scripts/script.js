@@ -13,7 +13,7 @@ async function logWords() {
     "https://words-api-v1.onrender.com/api/v1/words"
   );
   const wordsRequest = await response.json();
-  console.log(wordsRequest);
+  return wordsRequest;
 }
 
 String.prototype.replaceAt = function (index, replacement) {
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       motGenere = false;
       nbChances = 8;
       historique = [];
-      images.src = "/JeuDuPenduJS/images/start.png";
+      images.src = "images/start.png";
       lancement();
     });
   } else {
@@ -47,7 +47,8 @@ function lancement() {
     "---------------------------------------------------"
   );
 
-  logWords();
+  let words = logWords();
+  console.log(words);
 
   let zoneJeu = document.querySelector(".zoneJeu");
   zoneJeu.style.display = "block";
@@ -209,28 +210,28 @@ function generatedImages() {
   switch (nbChances) {
     case 8:
       // mettre l'image de début
-      images.src = "/JeuDuPenduJS/images/poteau2.png";
+      images.src = "/images/poteau2.png";
       break;
     case 7:
-      images.src = "/JeuDuPenduJS/images/poteau3.png";
+      images.src = "/images/poteau3.png";
       break;
     case 6:
-      images.src = "/JeuDuPenduJS/images/poteau4.png";
+      images.src = "/images/poteau4.png";
       break;
     case 5:
-      images.src = "/JeuDuPenduJS/images/poteau5.png";
+      images.src = "/images/poteau5.png";
       break;
     case 4:
-      images.src = "/JeuDuPenduJS/images/poteau6.png";
+      images.src = "/images/poteau6.png";
       break;
     case 3:
-      images.src = "/JeuDuPenduJS/images/poteau7.png";
+      images.src = "/images/poteau7.png";
       break;
     case 2:
-      images.src = "/JeuDuPenduJS/images/poteau8.png";
+      images.src = "/images/poteau8.png";
       break;
     case 1:
-      images.src = "/JeuDuPenduJS/images/poteau9.png";
+      images.src = "/images/poteau9.png";
       break;
 
     //...
