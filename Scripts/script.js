@@ -8,6 +8,14 @@ let nbChances = 8;
 let nbMots = 0;
 let nbMotsGenere = 0;
 
+async function logWords() {
+  const response = await fetch(
+    "https://words-api-v1.onrender.com/api/v1/words"
+  );
+  const wordsRequest = await response.json();
+  console.log(wordsRequest);
+}
+
 String.prototype.replaceAt = function (index, replacement) {
   return (
     this.substring(0, index) +
@@ -36,8 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function lancement() {
   console.log(
-    "-------------------------------------------------------------------"
+    "---------------------------------------------------"
   );
+
+  logWords();
 
   let zoneJeu = document.querySelector(".zoneJeu");
   zoneJeu.style.display = "block";
@@ -100,7 +110,7 @@ function jeu(motRandom, motRandomRevele) {
   btnValider.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
       event.preventDefault();
-      document.getElementById("myBtn").click();
+      lancement();
     }
   });
 
@@ -156,7 +166,6 @@ function finJeu(gagne, mot, btnValider) {
   historique = [];
   btnValider.disabled = true;
   motGenere = false;
-  nbChances = 8;
   if (gagne) {
     Swal.fire(
       "Bien jouer !",
@@ -169,6 +178,7 @@ function finJeu(gagne, mot, btnValider) {
     Swal.fire("Dommage !", `Le mot était : ${mot}`, "error");
   }
   images.src = "/JeuDuPenduJS/images/start.png";
+  nbChances = 8;
   lancement();
 }
 
