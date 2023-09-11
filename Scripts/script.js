@@ -9,11 +9,19 @@ let nbMots = 0;
 let nbMotsGenere = 0;
 
 async function logWords() {
-  const response = await fetch(
-    "https://words-api-v1.onrender.com/api/v1/words"
-  );
-  const wordsRequest = await response.json();
-  return wordsRequest;
+  try {
+    const response = await fetch(
+      "https://words-api-v1.onrender.com/api/v1/words"
+    );
+    if (!response.ok) {
+      throw new Error(`Erreur HTTP! Statut : ${response.status}`);
+    }
+    const wordsRequest = await response.json();
+    return wordsRequest;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des mots :", error);
+    throw error;
+  }
 }
 
 String.prototype.replaceAt = function (index, replacement) {
@@ -43,12 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function lancement() {
-  console.log(
-    "---------------------------------------------------"
-  );
-
-  let words = logWords();
-  console.log(words);
+  console.log("---------------------------------------------------");
 
   let zoneJeu = document.querySelector(".zoneJeu");
   zoneJeu.style.display = "block";
@@ -60,6 +63,8 @@ function lancement() {
   btnJouer.style.display = "none";
 
   let mot = document.querySelector("#textePendu");
+
+  // faire un tableau pour stocker les mots déja utilisés
 
   if (!motGenere) {
     let indexRandom = motsCaches[Math.floor(Math.random() * motsCaches.length)];
