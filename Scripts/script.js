@@ -1,6 +1,8 @@
 let motGenere = false;
-let word;
+let motRandomRevele;
 let motEnCours;
+let word;
+let mask;
 let score = 0;
 let nbChances = 8;
 let nbMots = 0;
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
       motGenere = false;
       nbChances = 8;
       historique = [];
-      images.src = "images/start.png";
+      images.src = "/images/start.png";
       lancement();
     });
   } else {
@@ -35,12 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function lancement() {
   console.log("---------------------------------------------------");
-
-  const words = await fetch("https://words-api-v1.onrender.com/api/v1/words")
-    .then((res) => res.json())
-    .catch((error) => console.error("ERROR"));
-
-  console.log(words);
 
   let zoneJeu = document.querySelector(".zoneJeu");
   zoneJeu.style.display = "block";
@@ -55,7 +51,6 @@ async function lancement() {
 
   // faire un tableau pour stocker les mots déja utilisés
   let nbIterationMot = 0;
-
   /*
   if (!motGenere) {
     let indexRandom = motsCaches[Math.floor(Math.random() * motsCaches.length)];
@@ -82,30 +77,39 @@ async function lancement() {
   }
 */
 
-  console.log(nbIterationMot);
-
   if (!motGenere) {
+    const words = await fetch("https://words-api-v1.onrender.com/api/v1/words")
+      .then((res) => res.json())
+      .catch((error) => console.error("ERROR"));
+    console.log(words);
     let wordIndex = Math.floor(Math.random() * words.length);
-    let word = words[wordIndex];
-    motEnCours = word.mask; // Initialisez le motEnCours avec le motRandom généré
+    let wordJson = words[wordIndex];
+    mask = wordJson.mask;
+    word = wordJson.word;
+    console.log(word);
+    motEnCours = mask;
     nbMotsGenere++;
     mot.textContent = motEnCours;
-    for (let i = 0; i < wordsAlreadyUse.length; i++) {
-      if (word.word === wordsAlreadyUse[i]) {
-        nbIterationMot++;
-      }
-    }
-    wordsAlreadyUse.push(word.word);
-  } else {
-    lancement();
+    wordsAlreadyUse.push(word);
+    console.log(wordsAlreadyUse);
   }
-
+  for (let i = 0; i < wordsAlreadyUse.length; i++) {
+    if (word === wordsAlreadyUse[i]) {
+      nbIterationMot++;
+    }
+  }
+  console.log(nbIterationMot);
+  /*nbIterationMot === 1
+    ? lancement()
+    : console.log("Iteration " + nbIterationMot);
+*/
   motGenere = true;
   nbIterationMot = 0;
-  jeu(motEnCours, word.word);
+
+  jeu(motEnCours, word);
 }
 
-function jeu(motRandom, motRandomRevele) {
+function jeu(motEnCours, motRandomRevele) {
   let lettre = document.querySelector("#lettre");
   let lettreBonne = false;
   let nbChancesElement = document.querySelector("#nbChances");
@@ -129,9 +133,12 @@ function jeu(motRandom, motRandomRevele) {
     }
   });
 
+  console.log(motEnCours);
+  console.log(motRandomRevele);
+
   for (let i = 0; i < motEnCours.length; i++) {
     if (lettreTape === motRandomRevele[i]) {
-      motEnCours = motEnCours.replaceAt(i * 2, motRandomRevele[i]); // PEUT ETRE ENLEVER LE 2* car dans la bdd comme ca --- et non - - - 
+      motEnCours = motEnCours.replaceAt(i * 2, motRandomRevele[i]); // PEUT ETRE ENLEVER LE 2* car dans la bdd comme ca --- et non - - -
       count++;
       lettreBonne = true;
     }
@@ -142,7 +149,7 @@ function jeu(motRandom, motRandomRevele) {
 
   console.log(isLetterUsed(lettreTape, btnValider));
   console.log(lettreBonne);
-  creationHistorique(lettreTape);
+  //creationHistorique(lettreTape);
 
   // affichage des différents paragraphes
   nbChancesElement.textContent = `Nombres de chance : ${nbChances}`;
@@ -192,7 +199,7 @@ function finJeu(gagne, mot, btnValider) {
   } else {
     Swal.fire("Dommage !", `Le mot était : ${mot}`, "error");
   }
-  images.src = "/JeuDuPenduJS/images/start.png";
+  images.src = "/images/start.png";
   nbChances = 8;
   lancement();
 }
