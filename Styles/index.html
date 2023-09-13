@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Styles/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/Scripts/donnees.js"></script>
+    <script src="/Scripts/script.js"></script>
+    <script></script>
+    <title>Jeu du pendu</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/images/icon_pendu.png"
+    />
+  </head>
+  <body>
+    <header>Jeu du pendu</header>
+
+    <div class="zoneSettings">
+      <p>Paramètres de partie :</p>
+      <input type="checkbox" name="checkbox" id="checkBoxId">
+      <label for="checkbox" id="labelCheckBox">Activer l'aide</label>
+      <br>
+      <button type="button" id="btn-Jouer" onclick="lancement()">Jouer</button>
+    </div>
+    <div class="zoneJeu">
+      <p id="textePendu"></p>
+      <input type="text" name="letre" id="lettre" />
+      <button type="button" id="btn-valider" onclick="lancement()">
+        Valider
+      </button>
+      <p id="nbChances">Nombres de chance :</p>
+      <div class="btn-rejouer">
+        <button type="button" id="btn-rejouer">Rejouer</button>
+      </div>
+      <p id="score">Score :</p>
+      <div class="images">
+        <img
+          id="image"
+          src="/images/start.png"
+          alt="Image pendu"
+          width="200"
+          height="200"
+        />
+      </div>
+    </div>
+    <div class="historique">
+      <p id="historiqueListe">Historique des lettres utilisés :</p>
+    </div>
+  </body>
+</html>
