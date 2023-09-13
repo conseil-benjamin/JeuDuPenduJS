@@ -8,6 +8,7 @@ let nbChances = 8;
 let nbMots = 0;
 let nbMotsGenere = 0;
 let wordsAlreadyUse = [];
+let historique = [];
 
 String.prototype.replaceAt = function (index, replacement) {
   return (
@@ -35,6 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+function initialisation(){
+  if(checkbox){
+
+  }
+}
+
+
 async function lancement() {
   console.log("---------------------------------------------------");
 
@@ -48,6 +56,9 @@ async function lancement() {
   btnJouer.style.display = "none";
 
   let mot = document.querySelector("#textePendu");
+
+  let zoneSettings = document.querySelector(".zoneSettings");
+  zoneSettings.style.visibility = "hidden"
 
   // faire un tableau pour stocker les mots déja utilisés
   let nbIterationMot = 0;
@@ -106,10 +117,10 @@ async function lancement() {
   motGenere = true;
   nbIterationMot = 0;
 
-  jeu(motEnCours, word);
+  jeu(word);
 }
 
-function jeu(motEnCours, motRandomRevele) {
+function jeu(motRandomRevele) {
   let lettre = document.querySelector("#lettre");
   let lettreBonne = false;
   let nbChancesElement = document.querySelector("#nbChances");
@@ -125,20 +136,20 @@ function jeu(motEnCours, motRandomRevele) {
     verificationInput(lettreTape, btnValider);
   });
 
-  // ne marche pas pour l'instant
-  btnValider.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
+  lettre.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      let lettreTape = lettre.value;
+      verificationInput(lettreTape, btnValider);
       lancement();
     }
-  });
+});
 
   console.log(motEnCours);
   console.log(motRandomRevele);
 
   for (let i = 0; i < motEnCours.length; i++) {
     if (lettreTape === motRandomRevele[i]) {
-      motEnCours = motEnCours.replaceAt(i * 2, motRandomRevele[i]); // PEUT ETRE ENLEVER LE 2* car dans la bdd comme ca --- et non - - -
+      motEnCours = motEnCours.replaceAt(i * 2, motRandomRevele[i]);
       count++;
       lettreBonne = true;
     }
@@ -146,10 +157,7 @@ function jeu(motEnCours, motRandomRevele) {
   mot.textContent = motEnCours;
 
   count === 0 ? (lettreBonne = false) : (lettreBonne = true);
-
-  console.log(isLetterUsed(lettreTape, btnValider));
-  console.log(lettreBonne);
-  //creationHistorique(lettreTape);
+  creationHistorique(lettreTape);
 
   // affichage des différents paragraphes
   nbChancesElement.textContent = `Nombres de chance : ${nbChances}`;
@@ -218,6 +226,7 @@ function creationHistorique(lettreTape) {
   }
 
   if (!lettreDejaPresente) {
+    lettreTape = lettreTape.toUpperCase();
     historique.push(lettreTape);
   }
 
