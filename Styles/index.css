@@ -5,11 +5,8 @@
 }
 
 body {
-  --colorQuartz: #bcabae;
-  --colorDarkBlue: #2a293e;
-  --colorWhite: #ffff;
-  background-color: var(--colorDarkBlue);
-  color: var(--colorWhite);
+  background-color: #2a293e;
+  color: #bcabae;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,11 +32,10 @@ header {
   transition: 0.3s ease-in-out;
   border-radius: 20px;
 }
-
 #btn-valider:hover {
-  color: var(--colorQuartz);
-  cursor: pointer;
-  background-color: black;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 #lettre {
@@ -62,11 +58,10 @@ header {
   border-radius: 20px;
   transition: 0.3s ease-in-out;
 }
-
 #btn-Jouer:hover {
-  cursor: pointer;
-  color: var(--colorQuartz);
-  background-color: black;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .btn-rejouer {
@@ -83,11 +78,10 @@ header {
   transition: 0.3s ease-in-out;
   border-radius: 20px;
 }
-
 #btn-rejouer:hover {
-  cursor: pointer;
-  color: var(--colorQuartz);
-  background-color: black;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .zoneJeu {
@@ -119,18 +113,15 @@ header {
 
 .zoneSettings {
   padding: 2em;
-  border: 2px solid blue;
   margin: 3em;
   border: 2px solid black;
   border-radius: 50px;
 }
-
-.zoneSettings, p {
+.zoneSettings p {
   text-align: center;
   margin: 2em;
 }
-
-.zoneSettings, input {
+.zoneSettings input {
   text-align: center;
   margin: 2em 0em 2em 0em;
 }/*# sourceMappingURL=index.css.map */
