@@ -5,9 +5,9 @@
 }
 
 @mixin buttonHover {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  color: var(--colorQuartz);
+  cursor: pointer;
+  background-color: black;
 }
 
 $colorQwartz: #bcabae;
@@ -58,18 +58,6 @@ header {
   text-align: center;
 }
 
-#btn-Jouer {
-  height: 50px;
-  width: 100px;
-  padding: 0.5em;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-  transition: 0.3s ease-in-out;
-  &:hover {
-    @include buttonHover();
-  }
-}
-
 .btn-rejouer {
   display: flex;
   justify-content: center;
@@ -116,16 +104,26 @@ header {
 }
 
 .zoneSettings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 2em;
   margin: 3em;
+  flex-direction: column;
   border: 2px solid black;
   border-radius: 50px;
-  p {
-    text-align: center;
-    margin: 2em;
+  p, label{
+    margin: 0em 1em 1em 1em;
   }
-  input {
-    text-align: center;
-    margin: 2em 0em 2em 0em;
+  #btn-Jouer {
+    height: 50px;
+    width: 100px; 
+    padding: 0.5em;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+    &:hover {
+      @include buttonHover();
+    }
   }
 }

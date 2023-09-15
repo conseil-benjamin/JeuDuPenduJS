@@ -4,12 +4,16 @@ let motEnCours;
 let word;
 let mask;
 let score = 0;
-let nbChances = 8;
+let nbChances = 10;
 let nbMots = 0;
 let nbMotsGenere = 0;
 let wordsAlreadyUse = [];
 let historique = [];
 
+/**
+ * * méthode qui permet de remplacer un underscore par la lettre à l'index correspondant
+ */
+// 
 String.prototype.replaceAt = function (index, replacement) {
   return (
     this.substring(0, index) +
@@ -18,6 +22,10 @@ String.prototype.replaceAt = function (index, replacement) {
   );
 };
 
+/**
+ * * permet une fois le DOM de chargé de générer tous les trucs nécessaire au démarrage du jeu
+ */
+// 
 document.addEventListener("DOMContentLoaded", () => {
   let images = document.querySelector("#image");
   let btnRejouer = document.querySelector("#btn-rejouer");
@@ -26,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btnRejouer.addEventListener("click", () => {
       document.querySelector("#lettre").value = "";
       motGenere = false;
-      nbChances = 8;
+      nbChances = 10;
       historique = [];
       images.src = "/images/start.png";
       lancement();
@@ -35,7 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("L'élément avec l'ID 'btn-rejouer' n'a pas été trouvé.");
   }
 });
-
+/**
+ * * permettra si checkBox activer aide coché de donner
+ * * un indice à l'utilisateur quand il lui reste peu de vie
+ */
+// 
 function initialisation(){
   if(checkbox){
 
@@ -60,34 +72,12 @@ async function lancement() {
   let zoneSettings = document.querySelector(".zoneSettings");
   zoneSettings.style.visibility = "hidden"
 
-  // faire un tableau pour stocker les mots déja utilisés
   let nbIterationMot = 0;
-  /*
-  if (!motGenere) {
-    let indexRandom = motsCaches[Math.floor(Math.random() * motsCaches.length)];
-    motRandom = indexRandom.mot;
-    let isMotGenerated = indexRandom.generated;
-    // pour get la difficulté du mot :
-    // let difficulte = indexRandom.difficulte;
-    // faire un switch case pour en fonction de la difficulte afficher le texte d'une autre couleur
-    console.log(isMotGenerated);
-    if (isMotGenerated) {
-      console.log("????????????????????????????????????????????????");
-      lancement();
-    } else {
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-      indexMotRandom = motsCaches.findIndex((objet) => objet.mot === motRandom);
-      motRandomRevele = mots[indexMotRandom];
-      motEnCours = motRandom; // Initialisez le motEnCours avec le motRandom généré
-      nbMotsGenere++;
-      console.log(nbMotsGenere);
-      isMotGenerated = true;
-      console.log(isMotGenerated);
-      mot.textContent = motEnCours;
-    }
-  }
-*/
 
+  /**
+   ** récupération des mots dans la BDD via mon API
+   ** et affichage d'un mot aléatoire à l'écran 
+  */
   if (!motGenere) {
     const words = await fetch("https://words-api-v1.onrender.com/api/v1/words")
       .then((res) => res.json())
@@ -104,13 +94,15 @@ async function lancement() {
     wordsAlreadyUse.push(word);
     console.log(wordsAlreadyUse);
   }
+  /*
   for (let i = 0; i < wordsAlreadyUse.length; i++) {
     if (word === wordsAlreadyUse[i]) {
       nbIterationMot++;
     }
   }
   console.log(nbIterationMot);
-  /*nbIterationMot === 1
+  // pour vérifier qu'un mot déjà tomber ne revienne pas
+  nbIterationMot === 1
     ? lancement()
     : console.log("Iteration " + nbIterationMot);
 */
@@ -130,23 +122,37 @@ function jeu(motRandomRevele) {
   let count = 0;
 
   btnValider.disabled = true;
-
+  /**
+   * * permet de vérifier le contenu de l'input lettre
+   */
   lettre.addEventListener("input", () => {
     let lettreTape = lettre.value;
     verificationInput(lettreTape, btnValider);
   });
 
+  /**
+   * * permet de valider sa lettre avec la touche "entrer"
+   * ! Régler problème : lettre pas valide accepté quand même
+   */
   lettre.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-      let lettreTape = lettre.value;
-      verificationInput(lettreTape, btnValider);
-      lancement();
+    let lettreTape = lettre.value;
+    lettreTape = lettreTape.toLowerCase();
+    if(!verificationInput(lettreTape, btnValider)){
+      if (e.key === 'Enter') {
+        lancement();
+      }
+    }
+    else{
+      console.log("Lettre ok");
     }
 });
 
   console.log(motEnCours);
   console.log(motRandomRevele);
 
+  // boucle pour chercher une lettre correspondant à l'input
+  // dans le mot à trouver
+  // si trouver remplacer par l'input à l'index qu'il faut
   for (let i = 0; i < motEnCours.length; i++) {
     if (lettreTape === motRandomRevele[i]) {
       motEnCours = motEnCours.replaceAt(i * 2, motRandomRevele[i]);
@@ -154,8 +160,11 @@ function jeu(motRandomRevele) {
       lettreBonne = true;
     }
   }
+  // affichage du mot actualisé à l'écran
   mot.textContent = motEnCours;
 
+  // permet de vérifier si la lettre rentré 
+  // a été correct ou non
   count === 0 ? (lettreBonne = false) : (lettreBonne = true);
   creationHistorique(lettreTape);
 
@@ -163,10 +172,19 @@ function jeu(motRandomRevele) {
   nbChancesElement.textContent = `Nombres de chance : ${nbChances}`;
   document.querySelector("#score").innerHTML = `Score : ${score} / ${nbMots}`;
 
+  // permet que la logique du jeu ne joue pas un 
+  // tour sans que le joueur puisse commencer
+  // sinon il commence direct avec nbChances --
   isVoidInput(lettreTape)
     ? console.log("Début")
     : isEndGameOrNot(btnValider, motRandomRevele, lettreBonne);
 }
+
+/**
+ * ! Régler problème : jeu se finit pas à nbChances === 0 mais -1
+ * * fonction permettant de vérifier si le mot à été trouver
+ * * ou bien si son nombres de chances et arrivé à 0
+ */
 
 function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
   let nbChancesElement = document.querySelector("#nbChances");
@@ -175,6 +193,10 @@ function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
   let message = "";
   document.querySelector("#lettre").value = "";
   document.querySelector("#score").innerHTML = `Score : ${score} / ${nbMots}`;
+  /**
+   * * enlève les espaces dans le motEnCours pour pouvoir ensuite
+   * * comparer le mot trouver du user et le mot à trouver
+   */
   motSansEspace = motEnCours.replace(/\s/g, "");
 
   motSansEspace === motRandomRevele
@@ -190,6 +212,12 @@ function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
     : (nbChancesElement.textContent = `Nombres de chance : ${nbChances}`);
 }
 
+/**
+ * * affichage d'une pop up de fin de jeu
+ * * récapitulant son score actuel/nbMots
+ * * ainsi que si il vient de gagner ou non
+ */
+
 function finJeu(gagne, mot, btnValider) {
   let images = document.querySelector("#image");
   nbMots++;
@@ -200,7 +228,7 @@ function finJeu(gagne, mot, btnValider) {
     Swal.fire(
       "Bien jouer !",
       `Tu as trouver le mot ${mot} avec ${
-        8 - nbChances
+        10 - nbChances
       } erreurs. Ton score est de ${score} / ${nbMots}`,
       "success"
     );
@@ -208,14 +236,20 @@ function finJeu(gagne, mot, btnValider) {
     Swal.fire("Dommage !", `Le mot était : ${mot}`, "error");
   }
   images.src = "/images/start.png";
-  nbChances = 8;
+  nbChances = 10;
   lancement();
 }
+
+/**
+ * * à chaque lettreBonne on la stocke dans un tableau et
+ * * on l'affiche à l'écran pour que l'user sache ce qu'il
+ * * a déjà jouer
+ */
 
 function creationHistorique(lettreTape) {
   console.log(lettreTape);
   let historiqueElement = document.querySelector("#historiqueListe");
-  let lettreDejaPresente = false; // Variable pour suivre si la lettre tapée est déjà présente dans l'historique.
+  let lettreDejaPresente = false;
 
   for (let i = 0; i < historique.length; i++) {
     if (lettreTape === historique[i]) {
@@ -235,11 +269,18 @@ function creationHistorique(lettreTape) {
     "Historique des lettres utilisés : " + historique.join(" , ");
 }
 
+/**
+ * * permet de générer les images qui change en fonction 
+ * * du nombre de chances de l'user
+ */
+
 function generatedImages() {
   let images = document.querySelector("#image");
   switch (nbChances) {
+    case 9:
+      images.src = "/images/poteau1.png";
+      break;
     case 8:
-      // mettre l'image de début
       images.src = "/images/poteau2.png";
       break;
     case 7:
@@ -262,11 +303,15 @@ function generatedImages() {
       break;
     case 1:
       images.src = "/images/poteau9.png";
-      break;
-
-    //...
+    case 0: 
+      images.src = "/images/poteau10.png";
   }
 }
+/**
+ * ! Régler problème : lettre majuscule pas accepté
+ * * vérification de l'input de l'user
+ * * si pas correct on désactive le btn
+ */
 
 function verificationInput(lettreTape, btnValider) {
   btnValider.disabled = true;
@@ -284,19 +329,23 @@ function verificationInput(lettreTape, btnValider) {
 }
 
 function isVoidInput(value) {
+  value = value.toLowerCase();
   return value.length === 0;
 }
 
 function isOnlyOneCharacter(value) {
+  value = value.toLowerCase();
   return value.length === 1;
 }
 
 function isStringOnlyLetters(value) {
+  value = value.toLowerCase();
   let regex = new RegExp("[a-z]+$");
   return typeof value === "string" && regex.test(value);
 }
 
 function isLetterUsed(value, btnValider) {
+  value = value.toLowerCase();
   let count = 0;
   for (let i = 0; i < historique.length; i++) {
     if (historique[i] === value) {

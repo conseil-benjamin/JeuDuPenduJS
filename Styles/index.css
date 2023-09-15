@@ -33,9 +33,9 @@ header {
   border-radius: 20px;
 }
 #btn-valider:hover {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  color: var(--colorQuartz);
+  cursor: pointer;
+  background-color: black;
 }
 
 #lettre {
@@ -48,20 +48,6 @@ header {
 #nbChances {
   padding: 3em 0 0 0;
   text-align: center;
-}
-
-#btn-Jouer {
-  height: 50px;
-  width: 100px;
-  padding: 0.5em;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-  transition: 0.3s ease-in-out;
-}
-#btn-Jouer:hover {
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
 .btn-rejouer {
@@ -79,9 +65,9 @@ header {
   border-radius: 20px;
 }
 #btn-rejouer:hover {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  color: var(--colorQuartz);
+  cursor: pointer;
+  background-color: black;
 }
 
 .zoneJeu {
@@ -112,16 +98,28 @@ header {
 }
 
 .zoneSettings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 2em;
   margin: 3em;
+  flex-direction: column;
   border: 2px solid black;
   border-radius: 50px;
 }
-.zoneSettings p {
-  text-align: center;
-  margin: 2em;
+.zoneSettings p, .zoneSettings label {
+  margin: 0em 1em 1em 1em;
 }
-.zoneSettings input {
-  text-align: center;
-  margin: 2em 0em 2em 0em;
+.zoneSettings #btn-Jouer {
+  height: 50px;
+  width: 100px;
+  padding: 0.5em;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  transition: 0.3s ease-in-out;
+}
+.zoneSettings #btn-Jouer:hover {
+  color: var(--colorQuartz);
+  cursor: pointer;
+  background-color: black;
 }/*# sourceMappingURL=index.css.map */
