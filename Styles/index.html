@@ -19,19 +19,55 @@
     <header>Jeu du pendu</header>
 
     <div class="zoneSettings">
-      <p>Paramètres de partie :</p>
+      <p><strong><u>Paramètres de partie :</u></strong></p>
       <label for="checkboxInput" id="labelCheckBox">Activer l'aide</label>
       <input type="checkbox" name="checkboxInput" id="checkBoxId">
+
+      <label for="checkBoxfacile">Mots faciles</label>
+      <div class="checkboxFacileDiv">
+        <input type="checkbox" value="1" name="checkBoxfacile" id="checkboxFacileInput" />
+        <label for="checkboxFacileInput" id="labelInside"></label>
+      </div>
+
+      <div class="checkboxMoyenDiv">
+        <input type="checkbox" value="1" name="checkBoxMoyen" id="checkboxMoyenInput" />
+        <label for="checkboxMoyenInput" id="labelInside"></label>
+      </div>
+
+      <div class="checkBoxDifficileDiv">
+        <input type="checkbox" value="1" name="checkBoxDifficile" id="checkboxDifficilenInput" />
+        <label for="checkboxDifficilenInput" id="labelInside"></label>
+      </div>
+
+      <div class="checkBoxTouteDifficulteDiv">
+        <input type="checkbox" value="1" name="checkBoxTouteDifficulte" id="checkBoxTouteDifficulteInput" />
+        <label for="checkBoxTouteDifficulteInput" id="labelInside"></label>
+      </div>
+
+      <label for="checkboxInput" id="labelCheckBox">Mots difficulté moyen</label>
+      <input type="checkbox" name="checkBoxmoyen" id="checkBoxMoyen">
+      <label for="checkboxInput" id="labelCheckBox">Mots difficulté difficile</label>
+      <input type="checkbox" name="checkBoxdifficile" id="checkBoxDifficile">
       <br>
+
+      <label for="checkboxInput" id="labelCheckBox">Mots toutes difficulté</label>
+      <input type="checkbox" name="checkBoxdifficile" id="checkBoxDifficile">
       <button type="button" id="btn-Jouer" onclick="lancement()">Jouer</button>
+      <p><strong><u>Règles du jeu : </u></strong><br>
+        - Choisisez parmis les différentes difficultés <br>
+        - Vous avez 10 vies <br>
+        - Vous pouvez choisir entre 3 niveaux de difficulté : facile, moyen et difficile <br>
+        - Ou bien jouer avec des mots de difficulté aléatoire <br>
+      </p>
     </div>
     <div class="zoneJeu">
       <p id="textePendu">Chargement ...</p>
-      <input type="text" name="letre" id="lettre" />
-      <button type="button" id="btn-valider" onclick="lancement()">
-        Valider
-      </button>
+      <div class="inputDiv">
+        <input type="text" name="letre" id="lettre" />
+        <button type="button" id="btn-valider" onclick="lancement()">Valider</button>
+      </div>
       <p id="nbChances">Nombres de chance :</p>
+      <p id="aideLabel"></p>
       <div class="btn-rejouer">
         <button type="button" id="btn-rejouer">Rejouer</button>
       </div>
@@ -46,8 +82,8 @@
         />
       </div>
     </div>
-    <div class="historique">
-      <p id="historiqueListe">Historique des lettres utilisés :</p>
+    <div class="zoneHistorique">
+      <p id="historiqueListe">Lettre restante : </p>
     </div>
   </body>
 </html>

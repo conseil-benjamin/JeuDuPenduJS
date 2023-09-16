@@ -5,49 +5,19 @@
 }
 
 body {
+  display: flex;
   background-color: #2a293e;
   color: #bcabae;
-  display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   height: 100vh;
 }
 
 header {
   position: absolute;
   top: 0;
-  padding: 4em 0 0 0;
+  padding: 1em 0 0 0;
   font-size: 2rem;
-}
-
-#textePendu {
-  padding-bottom: 2em;
-  font-size: 2rem;
-  text-align: center;
-}
-
-#btn-valider {
-  padding: 0.5em;
-  transition: 0.3s ease-in-out;
-  border-radius: 20px;
-}
-#btn-valider:hover {
-  color: var(--colorQuartz);
-  cursor: pointer;
-  background-color: black;
-}
-
-#lettre {
-  padding: 0 0 0 1em;
-  width: 60%;
-  border-radius: 20px;
-  height: 2em;
-}
-
-#nbChances {
-  padding: 3em 0 0 0;
-  text-align: center;
 }
 
 .btn-rejouer {
@@ -71,20 +41,61 @@ header {
 }
 
 .zoneJeu {
+  flex: 1;
   padding: 5em;
   border: 2px solid black;
   border-radius: 50px;
+  margin: 3em;
   display: none;
 }
-
-.historique {
-  display: none;
-  margin: 3em 0 0 0;
+.zoneJeu #aideLabel {
+  text-align: center;
 }
-
-#score {
+.zoneJeu #lettre {
+  padding: 0 0 0 1em;
+  width: 150px;
+  border-radius: 20px;
+  height: 2em;
+}
+.zoneJeu #nbChances {
+  padding: 3em 0 0 0;
+  text-align: center;
+}
+.zoneJeu #textePendu {
+  padding-bottom: 2em;
+  font-size: 2rem;
+  text-align: center;
+}
+.zoneJeu #btn-valider {
+  padding: 0.5em;
+  transition: 0.3s ease-in-out;
+  border-radius: 20px;
+}
+.zoneJeu #btn-valider:hover {
+  color: var(--colorQuartz);
+  cursor: pointer;
+  background-color: black;
+}
+.zoneJeu #score {
   padding: 2em 0 0 0;
   text-align: center;
+}
+
+.inputDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoneHistorique {
+  display: none;
+  padding: 5em;
+  border: 2px solid black;
+  border-radius: 50px;
+  color: #ffffff;
+  height: 40vh;
+  flex: 1;
+  margin: 3em;
 }
 
 .images {
@@ -99,6 +110,7 @@ header {
 
 .zoneSettings {
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
   padding: 2em;
@@ -122,4 +134,89 @@ header {
   color: var(--colorQuartz);
   cursor: pointer;
   background-color: black;
+}
+
+input[type=checkbox] {
+  visibility: hidden;
+}
+
+.checkboxFacileDiv {
+  width: 45px;
+  height: 15px;
+  background: #555;
+  margin: 20px 10px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.checkboxFacileDiv label {
+  display: block;
+  width: 20px;
+  height: 18px;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: -2px;
+  left: -19px;
+  background: #ccc;
+}
+
+.checkboxFacileDiv input[type=checkbox]:checked + label {
+  background: blue;
+  left: 16px;
+}
+
+.checkboxMoyenDiv {
+  width: 45px;
+  height: 15px;
+  background: #555;
+  margin: 20px 10px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.checkboxMoyenDiv label {
+  display: block;
+  width: 20px;
+  height: 18px;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: -2px;
+  left: -19px;
+  background: #ccc;
+}
+
+.checkboxMoyenDiv input[type=checkbox]:checked + label {
+  background: blue;
+  left: 16px;
+}
+
+.checkboxDifficileDiv {
+  width: 45px;
+  height: 15px;
+  background: #555;
+  margin: 20px 10px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.checkboxDifficileDiv label {
+  display: block;
+  width: 20px;
+  height: 18px;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: -2px;
+  left: -19px;
+  background: #ccc;
+}
+
+.checkboxDifficileDiv input[type=checkbox]:checked + label {
+  background: blue;
+  left: 16px;
 }/*# sourceMappingURL=index.css.map */

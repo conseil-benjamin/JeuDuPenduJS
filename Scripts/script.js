@@ -3,17 +3,22 @@ let motRandomRevele;
 let motEnCours;
 let word;
 let mask;
+let clue;
+let aide;
 let score = 0;
 let nbChances = 10;
 let nbMots = 0;
 let nbMotsGenere = 0;
 let wordsAlreadyUse = [];
 let historique = [];
+let lettreRestante = ["A","B","C","D"
+                      ,"E","F","G","H","I","J","K"
+                    ,"L","M","N","O","P","Q","R","S",
+                    "T","U","V","W","X","Y","Z"];
 
 /**
  * * méthode qui permet de remplacer un underscore par la lettre à l'index correspondant
- */
-// 
+*/
 String.prototype.replaceAt = function (index, replacement) {
   return (
     this.substring(0, index) +
@@ -35,7 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector("#lettre").value = "";
       motGenere = false;
       nbChances = 10;
-      historique = [];
+      lettreRestante = ["A","B","C","D"
+                      ,"E","F","G","H","I","J","K"
+                    ,"L","M","N","O","P","Q","R","S",
+                    "T","U","V","W","X","Y","Z"];
       images.src = "/images/start.png";
       lancement();
     });
@@ -49,9 +57,16 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 // 
 function initialisation(){
+  let checkbox = document.querySelector("#checkBoxId");
+  let checkOrNot;
   if(checkbox){
-
+    checkOrNot = true;
   }
+  else{
+    console.log("Case non coché");
+    checkOrNot = false;
+  }
+  return checkOrNot;
 }
 
 
@@ -61,7 +76,7 @@ async function lancement() {
   let zoneJeu = document.querySelector(".zoneJeu");
   zoneJeu.style.display = "block";
 
-  let historique = document.querySelector(".historique");
+  let historique = document.querySelector(".zoneHistorique");
   historique.style.display = "block";
 
   let btnJouer = document.querySelector("#btn-Jouer");
@@ -70,7 +85,13 @@ async function lancement() {
   let mot = document.querySelector("#textePendu");
 
   let zoneSettings = document.querySelector(".zoneSettings");
-  zoneSettings.style.visibility = "hidden"
+
+  aide = false;
+
+  if (initialisation() === true){
+    console.log("case coché");
+    aide = true;
+  }
 
   let nbIterationMot = 0;
 
@@ -87,7 +108,9 @@ async function lancement() {
     let wordJson = words[wordIndex];
     mask = wordJson.mask;
     word = wordJson.word;
+    clue = wordJson.clue;
     console.log(word);
+    console.log(clue);
     motEnCours = mask;
     nbMotsGenere++;
     mot.textContent = motEnCours;
@@ -118,6 +141,7 @@ function jeu(motRandomRevele) {
   let nbChancesElement = document.querySelector("#nbChances");
   let btnValider = document.querySelector("#btn-valider");
   let mot = document.querySelector("#textePendu");
+  let aideLabel = document.querySelector("#aideLabel");
   let lettreTape = lettre.value;
   let count = 0;
 
@@ -127,6 +151,7 @@ function jeu(motRandomRevele) {
    */
   lettre.addEventListener("input", () => {
     let lettreTape = lettre.value;
+    console.log(lettreTape);
     verificationInput(lettreTape, btnValider);
   });
 
@@ -137,6 +162,8 @@ function jeu(motRandomRevele) {
   lettre.addEventListener('keypress', function (e) {
     let lettreTape = lettre.value;
     lettreTape = lettreTape.toLowerCase();
+    console.log(lettreTape);
+    console.log(verificationInput(lettreTape, btnValider));
     if(!verificationInput(lettreTape, btnValider)){
       if (e.key === 'Enter') {
         lancement();
@@ -167,10 +194,20 @@ function jeu(motRandomRevele) {
   // a été correct ou non
   count === 0 ? (lettreBonne = false) : (lettreBonne = true);
   creationHistorique(lettreTape);
+  affichageLettreRestante(lettreTape);
 
   // affichage des différents paragraphes
-  nbChancesElement.textContent = `Nombres de chance : ${nbChances}`;
+  nbChancesElement.textContent = `Nombre de chances : ${nbChances}`;
   document.querySelector("#score").innerHTML = `Score : ${score} / ${nbMots}`;
+
+  console.log(aide);
+  if(nbChances <= 3 && aide === true){
+      aideLabel.textContent = `Indice : ${clue}`;
+  }
+
+  console.log(clue);
+
+  console.log(aideLabel.textContent);
 
   // permet que la logique du jeu ne joue pas un 
   // tour sans que le joueur puisse commencer
@@ -181,7 +218,6 @@ function jeu(motRandomRevele) {
 }
 
 /**
- * ! Régler problème : jeu se finit pas à nbChances === 0 mais -1
  * * fonction permettant de vérifier si le mot à été trouver
  * * ou bien si son nombres de chances et arrivé à 0
  */
@@ -199,6 +235,13 @@ function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
    */
   motSansEspace = motEnCours.replace(/\s/g, "");
 
+  /**
+   * * Opération ternaire qui vérifie dabord si le mot trouvé est correct, si le cas alors 
+   * * appel fonction finJeu, si nbChances = 0 finJeu === Perdu
+   * * sinon on vérifie si la lettre rentré par l'user est correct, si non on décremente son
+   * * nombre de chances et on revérifie derrière si c'est perdu ou non, si lettreBonne = true 
+   * * alors on affiche juste son nombre de chance actuel
+   */
   motSansEspace === motRandomRevele
     ? ((gagne = true), score++, finJeu(gagne, motRandomRevele, btnValider))
     : nbChances === 0
@@ -206,10 +249,16 @@ function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
     : !lettreBonne
     ? (nbChances--,
       generatedImages(),
+      /**
+       * Vérifie si après avoir décrémenter son nombre de chances est 
+       * arrivé à 0, si le cas alors on appelle la fonction finJeu()
+       * sinon on retourne rien
+       */
+      (nbChances === 0 ? ((gagne = false), finJeu(gagne, motRandomRevele, btnValider)) : null),
       // implémenter if (nbChances === 0) pour regler probleme de nb erreurs
-      (message = "Nombres de chances : " + nbChances + "<br>Mauvaise lettre"),
+      (message = "Nombre de chances : " + nbChances + "<br>Mauvaise lettre"),
       (document.getElementById("nbChances").innerHTML = message))
-    : (nbChancesElement.textContent = `Nombres de chance : ${nbChances}`);
+    : (nbChancesElement.textContent = `Nombre de chances : ${nbChances}`);
 }
 
 /**
@@ -221,7 +270,10 @@ function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
 function finJeu(gagne, mot, btnValider) {
   let images = document.querySelector("#image");
   nbMots++;
-  historique = [];
+  lettreRestante = ["A","B","C","D"
+                      ,"E","F","G","H","I","J","K"
+                    ,"L","M","N","O","P","Q","R","S",
+                    "T","U","V","W","X","Y","Z"];
   btnValider.disabled = true;
   motGenere = false;
   if (gagne) {
@@ -237,6 +289,7 @@ function finJeu(gagne, mot, btnValider) {
   }
   images.src = "/images/start.png";
   nbChances = 10;
+  aideLabel.textContent = "";
   lancement();
 }
 
@@ -244,12 +297,30 @@ function finJeu(gagne, mot, btnValider) {
  * * à chaque lettreBonne on la stocke dans un tableau et
  * * on l'affiche à l'écran pour que l'user sache ce qu'il
  * * a déjà jouer
+ * ? Pourquoi pas faire l'inverse, donc afficher les lettres qu'il n'a pas fait
+ * ? L'affiche sous forme d'array de 4-5 par ligne sur la droite du jeu
  */
+function affichageLettreRestante(lettreTape) {
+  console.log(lettreTape);
+  let historiqueElement = document.querySelector("#historiqueListe");
+
+  for (let i = 0; i < lettreRestante.length; i++) {
+    lettreTape = lettreTape.toUpperCase();
+    if (lettreTape === lettreRestante[i]) {
+      console.log("lettre disponible" + lettreTape);
+      lettreRestante.splice(i, 1);
+      break;
+    }
+  }
+
+  console.log(lettreRestante);
+  historiqueElement.textContent =
+    "Lettre restante : " + lettreRestante;
+}
 
 function creationHistorique(lettreTape) {
   console.log(lettreTape);
-  let historiqueElement = document.querySelector("#historiqueListe");
-  let lettreDejaPresente = false;
+  let lettreDejaPresente = false; // Variable pour suivre si la lettre tapée est déjà présente dans l'historique.
 
   for (let i = 0; i < historique.length; i++) {
     if (lettreTape === historique[i]) {
@@ -260,14 +331,12 @@ function creationHistorique(lettreTape) {
   }
 
   if (!lettreDejaPresente) {
-    lettreTape = lettreTape.toUpperCase();
-    historique.push(lettreTape);
+    historique.push(lettreTape); // Ajoutez la lettre à l'historique uniquement si elle n'est pas déjà présente.
   }
 
   console.log(historique);
-  historiqueElement.textContent =
-    "Historique des lettres utilisés : " + historique.join(" , ");
 }
+
 
 /**
  * * permet de générer les images qui change en fonction 
@@ -313,6 +382,12 @@ function generatedImages() {
  * * si pas correct on désactive le btn
  */
 
+
+/**
+ * * Test unitaire qui vérifie si le caractère rentré par l'user est bien :
+ * * de type String, que le champ ne soit pas vide, qu'il n'y est pas plus d'un seul 
+ * * caractère et que la lettre n'est pas déjà été utilisé
+ */
 function verificationInput(lettreTape, btnValider) {
   btnValider.disabled = true;
 

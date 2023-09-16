@@ -10,52 +10,53 @@
   background-color: black;
 }
 
+@mixin divCheckBox {
+  width: 45px;
+  height: 15px;
+  background: #555;
+  margin: 20px 10px;
+  position: relative;
+  border-radius: 5px;
+}
+
+@mixin labelCheckBox {
+  display: block;
+  width: 20px;
+  height: 18px;
+  border-radius: 50%;
+  transition: all .5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: -2px;
+  left: -19px;
+  background: #ccc;
+}
+
+@mixin boxChecked{
+  background: blue;
+  left: 16px;
+}
+
+$font-color-dark : #000000;
+$font-color-light : #ffffff;
 $colorQwartz: #bcabae;
 $colorDarkBlue: #2a293e;
 $colorWhite: #ffff;
 
 body {
+  display: flex;
   background-color: $colorDarkBlue;
   color: $colorQwartz;
-  display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   height: 100vh;
 }
 
 header {
   position: absolute;
   top: 0;
-  padding: 4em 0 0 0;
+  padding: 1em 0 0 0;
   font-size: 2rem;
-}
-
-#textePendu {
-  padding-bottom: 2em;
-  font-size: 2rem;
-  text-align: center;
-}
-
-#btn-valider {
-  padding: 0.5em;
-  transition: 0.3s ease-in-out;
-  border-radius: 20px;
-  &:hover {
-    @include buttonHover();
-  }
-}
-
-#lettre {
-  padding: 0 0 0 1em;
-  width: 60%;
-  border-radius: 20px;
-  height: 2em;
-}
-
-#nbChances {
-  padding: 3em 0 0 0;
-  text-align: center;
 }
 
 .btn-rejouer {
@@ -77,20 +78,60 @@ header {
 }
 
 .zoneJeu {
+  flex: 1;
   padding: 5em;
   border: 2px solid black;
   border-radius: 50px;
+  margin: 3em;
   display: none;
+  #aideLabel{
+    text-align: center;
+  }
+  #lettre {
+    padding: 0 0 0 1em;
+    width: 150px;
+    border-radius: 20px;
+    height: 2em;
+  }
+  #nbChances {
+    padding: 3em 0 0 0;
+    text-align: center;
+  }
+  #textePendu {
+    padding-bottom: 2em;
+    font-size: 2rem;
+    text-align: center;
+  }
+  #btn-valider {
+    padding: 0.5em;
+    transition: 0.3s ease-in-out;
+    border-radius: 20px;
+    &:hover {
+      @include buttonHover();
+    }
+  }
+  #score {
+    padding: 2em 0 0 0;
+    text-align: center;
+  }
 }
 
-.historique {
-  display: none;
-  margin: 3em 0 0 0;
+.inputDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#score {
-  padding: 2em 0 0 0;
-  text-align: center;
+.zoneHistorique {
+  display: none;
+  padding: 5em;
+  border: 2px solid black;
+  border-radius: 50px;
+  color: $font-color-light;
+  //background-image: url(/images/blob-haikei.svg);
+  height: 40vh;
+  flex: 1;
+  margin: 3em;
 }
 
 .images {
@@ -105,6 +146,7 @@ header {
 
 .zoneSettings {
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
   padding: 2em;
@@ -126,4 +168,37 @@ header {
       @include buttonHover();
     }
   }
+}
+
+input[type=checkbox] {
+  visibility: hidden;
+}
+.checkboxFacileDiv {
+  @include divCheckBox();
+}
+.checkboxFacileDiv label {
+  @include labelCheckBox();
+}
+.checkboxFacileDiv input[type=checkbox]:checked + label {
+  @include boxChecked();
+}
+
+.checkboxMoyenDiv {
+  @include divCheckBox();
+}
+.checkboxMoyenDiv label {
+  @include labelCheckBox();
+}
+.checkboxMoyenDiv input[type=checkbox]:checked + label {
+  @include boxChecked();
+}
+
+.checkboxDifficileDiv {
+  @include divCheckBox();
+}
+.checkboxDifficileDiv label {
+  @include labelCheckBox();
+}
+.checkboxDifficileDiv input[type=checkbox]:checked + label {
+  @include boxChecked();
 }
