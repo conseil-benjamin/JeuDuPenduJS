@@ -69,8 +69,47 @@ function initialisation(){
   return checkOrNot;
 }
 
+/**
+ * * Appel API en fonction de la difficulté choisi par l'user
+ */
+async function getWords(){
+  let wordsEasyElement = document.querySelector("#checkboxFacileInput");
+  let wordsMediumElement = document.querySelector("#checkboxMoyenInput");
+  let wordsHardElement = document.querySelector("#checkboxDifficilenInput");
 
-async function lancement() {
+  console.log(wordsHardElement.checked);  
+
+  const apiUrl = {
+    easy: "https://words-api-v1.onrender.com/api/v1/words/easy-words",
+    medium: "https://words-api-v1.onrender.com/api/v1/words/medium-words",
+    hard: "https://words-api-v1.onrender.com/api/v1/words/difficult-words",
+    easyAndMedium: "https://words-api-v1.onrender.com/api/v1/words/easy-medium-words",
+    easyAndHard: "https://words-api-v1.onrender.com/api/v1/words/easy-hard-words",
+    mediumAndHard: "https://words-api-v1.onrender.com/api/v1/words/medium-hard-words",
+    default: "https://words-api-v1.onrender.com/api/v1/words/",
+  };
+
+  let selectedApiUrl = apiUrl.default;
+
+  if (wordsMediumElement.checked && wordsHardElement.checked && wordsEasyElement.checked) selectedApiUrl = apiUrl.default;
+  else if (wordsMediumElement && wordsHardElement) selectedApiUrl = apiUrl.mediumAndHard;
+  else if (wordsEasyElement && wordsHardElement) selectedApiUrl = apiUrl.easyAndHard;
+  else if (wordsEasyElement && wordsMediumElement) selectedApiUrl = apiUrl.easyAndMedium;
+  else if (wordsEasyElement.checked) selectedApiUrl = apiUrl.easy;
+  else if (wordsMediumElement) selectedApiUrl = apiUrl.medium;
+  else if (wordsHardElement) selectedApiUrl = apiUrl.hard;
+  else{
+    selectedApiUrl = apiUrl.default;
+  }
+
+  const returnWords = await fetch(selectedApiUrl)
+    .then((res) => res.json())
+    .catch((error) => console.error("ERROR"));
+
+  return returnWords;
+}
+
+function lancement() {
   console.log("---------------------------------------------------");
 
   let zoneJeu = document.querySelector(".zoneJeu");
@@ -84,7 +123,7 @@ async function lancement() {
 
   let mot = document.querySelector("#textePendu");
 
-  let zoneSettings = document.querySelector(".zoneSettings");
+  //let zoneSettings = document.querySelector(".zoneSettings");
 
   aide = false;
 
@@ -100,9 +139,7 @@ async function lancement() {
    ** et affichage d'un mot aléatoire à l'écran 
   */
   if (!motGenere) {
-    const words = await fetch("https://words-api-v1.onrender.com/api/v1/words")
-      .then((res) => res.json())
-      .catch((error) => console.error("ERROR"));
+    let words = getWords();
     console.log(words);
     let wordIndex = Math.floor(Math.random() * words.length);
     let wordJson = words[wordIndex];

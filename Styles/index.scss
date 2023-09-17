@@ -193,12 +193,23 @@ input[type=checkbox] {
   @include boxChecked();
 }
 
-.checkboxDifficileDiv {
+.checkBoxDifficileDiv {
   @include divCheckBox();
 }
-.checkboxDifficileDiv label {
+.checkBoxDifficileDiv label {
   @include labelCheckBox();
 }
-.checkboxDifficileDiv input[type=checkbox]:checked + label {
+.checkBoxDifficileDiv input[type=checkbox]:checked + label {
   @include boxChecked();
 }
+
+.checkBoxTouteDifficulteDiv {
+  @include divCheckBox();
+}
+.checkBoxTouteDifficulteDiv label {
+  @include labelCheckBox();
+}
+.checkBoxTouteDifficulteDiv input[type=checkbox]:checked + label {
+  @include boxChecked();
+}
+

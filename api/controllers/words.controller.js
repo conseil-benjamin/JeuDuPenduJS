@@ -58,3 +58,33 @@ module.exports.getDifficultWords = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+module.exports.getEasyAndMediumWords = async (req, res) => {
+  try {
+    const words = await WordsModel.find({ difficulty: { $in: ["facile", "moyen"] } });
+    res.status(200).json(words);
+  } catch(error) {
+    console.error("Erreur lors de la recherche de mots diffciles : ", error);
+    res.status(500).json({error: error.message});
+  }
+}
+
+module.exports.getEasyAndHardWords = async (req, res) => {
+  try {
+    const words = await WordsModel.find({ difficulty: { $in: ["facile", "difficile"] } });
+    res.status(200).json(words);
+  } catch(error) {
+    console.error("Erreur lors de la recherche de mots diffciles : ", error);
+    res.status(500).json({error: error.message});
+  }
+}
+
+module.exports.getMediumAndHardWords = async (req, res) => {
+  try {
+    const words = await WordsModel.find({ difficulty: { $in: ["facile", "difficile"] } });
+    res.status(200).json(words);
+  } catch(error) {
+    console.error("Erreur lors de la recherche de mots diffciles : ", error);
+    res.status(500).json({error: error.message});
+  }
+}

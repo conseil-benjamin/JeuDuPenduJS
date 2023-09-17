@@ -5,6 +5,9 @@ const {
   getMediumWords,
   getDifficultWords,
   getSingleWords,
+  getEasyAndMediumWords,
+  getEasyAndHardWords,
+  getMediumAndHardWords,
 } = require("../controllers/words.controller");
 const router = express.Router();
 const mongoose = require("mongoose");
@@ -19,6 +22,12 @@ router.get("/easy-words", getEasyWords);
 router.get("/medium-words", getMediumWords);
 
 router.get("/difficult-words", getDifficultWords);
+
+router.get("/easy-medium-words", getEasyAndMediumWords);
+
+router.get("/easy-hard-words", getEasyAndHardWords);
+
+router.get("/medium-hard-words", getMediumAndHardWords);
 
 router.post("/", (req, res) => {
   res.json({ message: req.body.message });
