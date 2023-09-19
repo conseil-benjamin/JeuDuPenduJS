@@ -17,42 +17,52 @@
   </head>
   <body>
     <header>Jeu du pendu</header>
-
+    <div id="#homePageId">
+      <a onclick="retourPageAcueil()"><img src="/images/icons/home.png" alt="icon_home"></a>
+    </div>
+    
     <div class="zoneSettings">
+      <img src="/images/icons/setttings.png" alt="icone paramètres" width="100" height="100">
       <p><strong><u>Paramètres de partie :</u></strong></p>
-      <label for="checkboxInput" id="labelCheckBox">Activer l'aide</label>
-      <input type="checkbox" name="checkboxInput" id="checkBoxId">
-
-      <label for="checkBoxfacile">Mots faciles</label>
-      <div class="checkboxFacileDiv">
-        <input type="checkbox" value="1" name="checkBoxfacile" id="checkboxFacileInput" />
-        <label for="checkboxFacileInput" id="labelInside"></label>
-      </div>
-
-      <div class="checkboxMoyenDiv">
-        <input type="checkbox" value="1" name="checkBoxMoyen" id="checkboxMoyenInput" />
-        <label for="checkboxMoyenInput" id="labelInside"></label>
-      </div>
-
-      <div class="checkBoxDifficileDiv">
-        <input type="checkbox" value="1" name="checkBoxDifficile" id="checkboxDifficilenInput" />
-        <label for="checkboxDifficilenInput" id="labelInside"></label>
-      </div>
-
-      <div class="checkBoxTouteDifficulteDiv">
-        <input type="checkbox" value="1" name="checkBoxTouteDifficulte" id="checkBoxTouteDifficulte" />
-        <label for="checkBoxTouteDifficulte" id="labelInside"></label>
-      </div>
+      <p>- Choisisez parmis les différentes difficultés</p>
       <br>
-
+      <div class="checkBoxElements">
+        <label for="checkBoxAideDiv">Activer l'aide : </label>
+        <div class="checkBoxAideDiv">
+          <input type="checkbox" value="1" name="checkboxAide" id="checkBoxAide" />
+          <label for="checkBoxAide" id="labelInside"></label>
+        </div>
+  
+        <label for="checkboxFacileDiv">Mots facile :</label>
+        <div class="checkboxFacileDiv">
+          <input type="checkbox" value="1" name="checkBoxfacile" id="checkboxFacileInput" />
+          <label for="checkboxFacileInput" id="labelInside"></label>
+        </div>
+  
+        <label for="checkboxMoyenDiv">Mots moyen :</label>
+        <div class="checkboxMoyenDiv">
+          <input type="checkbox" value="1" name="checkBoxMoyen" id="checkboxMoyenInput" />
+          <label for="checkboxMoyenInput" id="labelInside"></label>
+        </div>
+  
+        <label for="checkBoxDifficileDiv">Mots difficile : </label>
+        <div class="checkBoxDifficileDiv">
+          <input type="checkbox" value="1" name="checkBoxDifficile" id="checkboxDifficilenInput" />
+          <label for="checkboxDifficilenInput" id="labelInside"></label>
+        </div>
+      </div>
+      <div class="rules">
+        <img src="/images/icons/rules.png" alt="icone règles">
+        <p><strong><u>Règles du jeu : </u></strong><br>
+          - Choisisez parmis les différentes difficultés <br>
+          - Vous avez 10 vies <br>
+          - Vous pouvez choisir entre 3 niveaux de difficulté : facile, moyen et difficile <br>
+          - Ou bien jouer avec des mots de difficulté aléatoire <br>
+          - Si aucun filtre appliqué alors ce seront des mots de difficulté aléatoire
+        </p>
+      </div>
       <button type="button" id="btn-Jouer" onclick="lancement()">Jouer</button>
-      <p><strong><u>Règles du jeu : </u></strong><br>
-        - Choisisez parmis les différentes difficultés <br>
-        - Vous avez 10 vies <br>
-        - Vous pouvez choisir entre 3 niveaux de difficulté : facile, moyen et difficile <br>
-        - Ou bien jouer avec des mots de difficulté aléatoire <br>
-        - Si aucun filtre appliqué alors ce seront des mots de difficulté aléatoire
-      </p>
+  
     </div>
     <div class="zoneJeu">
       <p id="textePendu">Chargement ...</p>

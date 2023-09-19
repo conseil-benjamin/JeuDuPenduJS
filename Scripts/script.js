@@ -1,6 +1,7 @@
 let motGenere = false;
 let motRandomRevele;
 let motEnCours;
+let words;
 let word;
 let mask;
 let clue;
@@ -34,6 +35,7 @@ String.prototype.replaceAt = function (index, replacement) {
 document.addEventListener("DOMContentLoaded", () => {
   let images = document.querySelector("#image");
   let btnRejouer = document.querySelector("#btn-rejouer");
+  let aideLabel = document.querySelector("#aideLabel");
 
   if (btnRejouer) {
     btnRejouer.addEventListener("click", () => {
@@ -45,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     ,"L","M","N","O","P","Q","R","S",
                     "T","U","V","W","X","Y","Z"];
       images.src = "/images/start.png";
+      aideLabel.textContent = "";
       lancement();
     });
   } else {
@@ -57,9 +60,22 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 // 
 function initialisation(){
-  let checkbox = document.querySelector("#checkBoxId");
+  let rules = document.querySelector(".rules");
+  rules.style.display = "none";
+
+  let zoneJeu = document.querySelector(".zoneJeu");
+  zoneJeu.style.display = "block";
+
+  let historique = document.querySelector(".zoneHistorique");
+  historique.style.display = "block";
+
+  let btnJouer = document.querySelector("#btn-Jouer");
+  btnJouer.style.display = "none";
+
+  let checkbox = document.querySelector("#checkBoxAide");
   let checkOrNot;
-  if(checkbox){
+  
+  if(checkbox.checked ){
     checkOrNot = true;
   }
   else{
@@ -68,6 +84,22 @@ function initialisation(){
   }
   return checkOrNot;
 }
+
+
+function retourPageAcueil(){
+  let rules = document.querySelector(".rules");
+  rules.style.display = "block";
+
+  let zoneJeu = document.querySelector(".zoneJeu");
+  zoneJeu.style.display = "none";
+
+  let historique = document.querySelector(".zoneHistorique");
+  historique.style.display = "none";
+
+  let btnJouer = document.querySelector("#btn-Jouer");
+  btnJouer.style.display = "block";
+}
+
 
 /**
  * * Appel API en fonction de la difficulté choisi par l'user
@@ -92,12 +124,12 @@ async function getWords(){
   let selectedApiUrl = apiUrl.default;
 
   if (wordsMediumElement.checked && wordsHardElement.checked && wordsEasyElement.checked) selectedApiUrl = apiUrl.default;
-  else if (wordsMediumElement && wordsHardElement) selectedApiUrl = apiUrl.mediumAndHard;
-  else if (wordsEasyElement && wordsHardElement) selectedApiUrl = apiUrl.easyAndHard;
-  else if (wordsEasyElement && wordsMediumElement) selectedApiUrl = apiUrl.easyAndMedium;
+  else if (wordsMediumElement.checked && wordsHardElement.checked) selectedApiUrl = apiUrl.mediumAndHard;
+  else if (wordsEasyElement.checked && wordsHardElement.checked) selectedApiUrl = apiUrl.easyAndHard;
+  else if (wordsEasyElement.checked && wordsMediumElement.checked) selectedApiUrl = apiUrl.easyAndMedium;
   else if (wordsEasyElement.checked) selectedApiUrl = apiUrl.easy;
-  else if (wordsMediumElement) selectedApiUrl = apiUrl.medium;
-  else if (wordsHardElement) selectedApiUrl = apiUrl.hard;
+  else if (wordsMediumElement.checked) selectedApiUrl = apiUrl.medium;
+  else if (wordsHardElement.checked) selectedApiUrl = apiUrl.hard;
   else{
     selectedApiUrl = apiUrl.default;
   }
@@ -109,26 +141,14 @@ async function getWords(){
   return returnWords;
 }
 
-function lancement() {
+async function lancement() {
   console.log("---------------------------------------------------");
 
-  let zoneJeu = document.querySelector(".zoneJeu");
-  zoneJeu.style.display = "block";
-
-  let historique = document.querySelector(".zoneHistorique");
-  historique.style.display = "block";
-
-  let btnJouer = document.querySelector("#btn-Jouer");
-  btnJouer.style.display = "none";
-
   let mot = document.querySelector("#textePendu");
-
-  //let zoneSettings = document.querySelector(".zoneSettings");
 
   aide = false;
 
   if (initialisation() === true){
-    console.log("case coché");
     aide = true;
   }
 
@@ -139,32 +159,44 @@ function lancement() {
    ** et affichage d'un mot aléatoire à l'écran 
   */
   if (!motGenere) {
-    let words = getWords();
-    console.log(words);
-    let wordIndex = Math.floor(Math.random() * words.length);
-    let wordJson = words[wordIndex];
-    mask = wordJson.mask;
-    word = wordJson.word;
-    clue = wordJson.clue;
-    console.log(word);
-    console.log(clue);
-    motEnCours = mask;
-    nbMotsGenere++;
-    mot.textContent = motEnCours;
-    wordsAlreadyUse.push(word);
-    console.log(wordsAlreadyUse);
+    try{
+      words = await getWords();
+      console.log(words);
+      let wordIndex = Math.floor(Math.random() * words.length);
+      let wordJson = words[wordIndex];
+      mask = wordJson.mask;
+      word = wordJson.word;
+      clue = wordJson.clue;
+      difficulty = wordJson.difficulty;
+      console.log(word);
+      console.log(clue);
+      console.log(difficulty);
+      motEnCours = mask;
+      nbMotsGenere++;
+      mot.textContent = motEnCours;
+      wordsAlreadyUse.push(word);
+      console.log(wordsAlreadyUse);
+    }
+    catch (error){
+      console.error("Une erreur est survenue : ", error);
+    }
   }
-  /*
+
+
+  /**
+   * ! Ne marche pas pour l'instant
   for (let i = 0; i < wordsAlreadyUse.length; i++) {
     if (word === wordsAlreadyUse[i]) {
       nbIterationMot++;
     }
   }
-  console.log(nbIterationMot);
-  // pour vérifier qu'un mot déjà tomber ne revienne pas
-  nbIterationMot === 1
-    ? lancement()
-    : console.log("Iteration " + nbIterationMot);
+
+  if(nbIterationMot >=1){
+    lancement();
+  }
+  else{
+    console.log("tatatata");
+  }
 */
   motGenere = true;
   nbIterationMot = 0;
@@ -180,6 +212,7 @@ function jeu(motRandomRevele) {
   let mot = document.querySelector("#textePendu");
   let aideLabel = document.querySelector("#aideLabel");
   let lettreTape = lettre.value;
+  lettreTape = lettreTape.toLowerCase();
   let count = 0;
 
   btnValider.disabled = true;
@@ -188,7 +221,6 @@ function jeu(motRandomRevele) {
    */
   lettre.addEventListener("input", () => {
     let lettreTape = lettre.value;
-    console.log(lettreTape);
     verificationInput(lettreTape, btnValider);
   });
 
@@ -198,16 +230,13 @@ function jeu(motRandomRevele) {
    */
   lettre.addEventListener('keypress', function (e) {
     let lettreTape = lettre.value;
-    lettreTape = lettreTape.toLowerCase();
-    console.log(lettreTape);
-    console.log(verificationInput(lettreTape, btnValider));
     if(!verificationInput(lettreTape, btnValider)){
       if (e.key === 'Enter') {
         lancement();
       }
     }
     else{
-      console.log("Lettre ok");
+      console.log("erreur mauvaise donnée");
     }
 });
 
@@ -219,6 +248,7 @@ function jeu(motRandomRevele) {
   // si trouver remplacer par l'input à l'index qu'il faut
   for (let i = 0; i < motEnCours.length; i++) {
     if (lettreTape === motRandomRevele[i]) {
+      lettreTape = lettreTape.toLowerCase();
       motEnCours = motEnCours.replaceAt(i * 2, motRandomRevele[i]);
       count++;
       lettreBonne = true;
@@ -287,9 +317,9 @@ function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
     ? (nbChances--,
       generatedImages(),
       /**
-       * Vérifie si après avoir décrémenter son nombre de chances est 
-       * arrivé à 0, si le cas alors on appelle la fonction finJeu()
-       * sinon on retourne rien
+       * * Vérifie si après avoir décrémenter son nombre de chances est 
+       * * arrivé à 0, si le cas alors on appelle la fonction finJeu()
+       * * sinon on retourne rien
        */
       (nbChances === 0 ? ((gagne = false), finJeu(gagne, motRandomRevele, btnValider)) : null),
       // implémenter if (nbChances === 0) pour regler probleme de nb erreurs
@@ -414,7 +444,6 @@ function generatedImages() {
   }
 }
 /**
- * ! Régler problème : lettre majuscule pas accepté
  * * vérification de l'input de l'user
  * * si pas correct on désactive le btn
  */
@@ -441,23 +470,19 @@ function verificationInput(lettreTape, btnValider) {
 }
 
 function isVoidInput(value) {
-  value = value.toLowerCase();
   return value.length === 0;
 }
 
 function isOnlyOneCharacter(value) {
-  value = value.toLowerCase();
   return value.length === 1;
 }
 
 function isStringOnlyLetters(value) {
-  value = value.toLowerCase();
   let regex = new RegExp("[a-z]+$");
   return typeof value === "string" && regex.test(value);
 }
 
 function isLetterUsed(value, btnValider) {
-  value = value.toLowerCase();
   let count = 0;
   for (let i = 0; i < historique.length; i++) {
     if (historique[i] === value) {

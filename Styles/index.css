@@ -20,6 +20,13 @@ header {
   font-size: 2rem;
 }
 
+#homeImg {
+  margin: 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .btn-rejouer {
   display: flex;
   justify-content: center;
@@ -246,4 +253,39 @@ input[type=checkbox] {
 .checkBoxTouteDifficulteDiv input[type=checkbox]:checked + label {
   background: blue;
   left: 16px;
+}
+
+.checkBoxAideDiv {
+  width: 45px;
+  height: 15px;
+  background: #555;
+  margin: 20px 10px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.checkBoxAideDiv label {
+  display: block;
+  width: 20px;
+  height: 18px;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: -2px;
+  left: -19px;
+  background: #ccc;
+}
+
+.checkBoxAideDiv input[type=checkbox]:checked + label {
+  background: blue;
+  left: 16px;
+}
+
+#homePageId {
+  cursor: pointer;
+  margin: 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
 }/*# sourceMappingURL=index.css.map */

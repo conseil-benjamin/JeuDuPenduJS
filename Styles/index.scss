@@ -59,6 +59,14 @@ header {
   font-size: 2rem;
 }
 
+#homeImg{
+  //display: none;
+  margin: 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .btn-rejouer {
   display: flex;
   justify-content: center;
@@ -213,3 +221,20 @@ input[type=checkbox] {
   @include boxChecked();
 }
 
+.checkBoxAideDiv {
+  @include divCheckBox();
+}
+.checkBoxAideDiv label {
+  @include labelCheckBox();
+}
+.checkBoxAideDiv input[type=checkbox]:checked + label {
+  @include boxChecked();
+}
+
+#homePageId {
+  cursor: pointer;
+  margin: 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
