@@ -72,8 +72,13 @@ function initialisation(){
   let btnJouer = document.querySelector("#btn-Jouer");
   btnJouer.style.display = "none";
 
+  let zoneSettings = document.querySelector(".zoneSettings");
+  zoneSettings.style = " display: flex; align-items: center; justify-content: center; padding: 2em; margin: 3em; width= 20%";
+  // marche pas - id pas reconnu
+  /*
   let btnBackHomePage = document.querySelector("#homePageId");
   btnBackHomePage.style.display = "block";
+  */
 
   let checkbox = document.querySelector("#checkBoxAide");
   let checkOrNot;

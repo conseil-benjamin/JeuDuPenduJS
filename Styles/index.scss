@@ -78,7 +78,6 @@ header {
 }
 
 .zoneJeu {
-  flex: 1;
   padding: 5em;
   border: 2px solid black;
   border-radius: 50px;
@@ -124,14 +123,12 @@ header {
 
 .zoneHistorique {
   display: none;
-  padding: 5em;
   border: 2px solid black;
   border-radius: 50px;
-  color: $font-color-light;
-  //background-image: url(/images/blob-haikei.svg);
-  height: 40vh;
-  flex: 1;
+  width: 20%;
+  padding: 3em;
   margin: 3em;
+  color: $font-color-light;
 }
 
 .images {
@@ -146,12 +143,9 @@ header {
 
 .zoneSettings {
   display: flex;
-  flex: 1;
   align-items: center;
-  justify-content: center;
-  padding: 2em;
-  margin: 3em;
-  flex-direction: column;
+  justify-content: space-evenly; /* Pour espacer .rules et .checkBoxElements */
+  padding: 3em;
   border: 2px solid black;
   border-radius: 50px;
   p, label{
@@ -230,4 +224,14 @@ input[type=checkbox] {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.rules{
+  margin: 0 3em 0 0;
+}
+
+#backHomePageID{
+  position: absolute;
+  bottom: 0;
+  right: 50%;
 }

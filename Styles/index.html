@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/Styles/index.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/Scripts/donnees.js"></script>
     <script src="/Scripts/script.js"></script>
     <script></script>
     <title>Jeu du pendu</title>
@@ -17,16 +16,24 @@
   </head>
   <body>
     <header>Jeu du pendu</header>
-    <div id="#homePageId">
-      <a onclick="retourPageAcueil()"><img src="/images/icons/home.png" alt="icon_home"></a>
-    </div>
+      <a onclick="retourPageAcueil()"><img id="backHomePageID" src="/images/icons/home.png" alt="icon_home"></a>
     
     <div class="zoneSettings">
-      <img src="/images/icons/setttings.png" alt="icone paramètres" width="100" height="100">
+      <div class="rules">
+        <img src="/images/icons/rules.png" alt="icone règles">
+        <p><strong><u>Règles du jeu : </u></strong><br><br>
+          - 3 niveaux de difficultés de mots : Facile, Moyen et difficile<br><br>
+          - Vous avez 10 vies <br><br>
+          - Si aucun filtre appliqué alors ce seront des mots de difficulté aléatoire<br><br>
+          - Vous pourrez à tout moment, pendant que vous jouez, changez de difficulté de mot <br><br>
+          - A chaque mot trouvé vous gagnez un point, a l'inverse vous en gagnez pas
+        </p>
+      </div>
+      <div class="checkBoxElements">
+        <img src="/images/icons/setttings.png" alt="icone paramètres" width="100" height="100">
       <p><strong><u>Paramètres de partie :</u></strong></p>
       <p>- Choisisez parmis les différentes difficultés</p>
       <br>
-      <div class="checkBoxElements">
         <label for="checkBoxAideDiv">Activer l'aide : </label>
         <div class="checkBoxAideDiv">
           <input type="checkbox" value="1" name="checkboxAide" id="checkBoxAide" />
@@ -50,19 +57,8 @@
           <input type="checkbox" value="1" name="checkBoxDifficile" id="checkboxDifficilenInput" />
           <label for="checkboxDifficilenInput" id="labelInside"></label>
         </div>
+        <button type="button" id="btn-Jouer" onclick="lancement()">Jouer</button>
       </div>
-      <div class="rules">
-        <img src="/images/icons/rules.png" alt="icone règles">
-        <p><strong><u>Règles du jeu : </u></strong><br>
-          - Choisisez parmis les différentes difficultés <br>
-          - Vous avez 10 vies <br>
-          - Vous pouvez choisir entre 3 niveaux de difficulté : facile, moyen et difficile <br>
-          - Ou bien jouer avec des mots de difficulté aléatoire <br>
-          - Si aucun filtre appliqué alors ce seront des mots de difficulté aléatoire
-        </p>
-      </div>
-      <button type="button" id="btn-Jouer" onclick="lancement()">Jouer</button>
-  
     </div>
     <div class="zoneJeu">
       <p id="textePendu">Chargement ...</p>
