@@ -72,6 +72,9 @@ function initialisation(){
   let btnJouer = document.querySelector("#btn-Jouer");
   btnJouer.style.display = "none";
 
+  let btnBackHomePage = document.querySelector("#homePageId");
+  btnBackHomePage.style.display = "block";
+
   let checkbox = document.querySelector("#checkBoxAide");
   let checkOrNot;
   
@@ -98,6 +101,9 @@ function retourPageAcueil(){
 
   let btnJouer = document.querySelector("#btn-Jouer");
   btnJouer.style.display = "block";
+
+  let btnBackHomePage = document.querySelector("#homePageId");
+  btnBackHomePage.style.display = "none";
 }
 
 

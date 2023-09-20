@@ -20,13 +20,6 @@ header {
   font-size: 2rem;
 }
 
-#homeImg {
-  margin: 1em;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 .btn-rejouer {
   display: flex;
   justify-content: center;
@@ -283,6 +276,7 @@ input[type=checkbox] {
 }
 
 #homePageId {
+  display: none;
   cursor: pointer;
   margin: 1em;
   position: absolute;
