@@ -32,6 +32,8 @@ String.prototype.replaceAt = function (index, replacement) {
  * * permet une fois le DOM de chargé de générer tous les trucs nécessaire au démarrage du jeu
  */
 // 
+
+
 document.addEventListener("DOMContentLoaded", () => {
   let images = document.querySelector("#image");
   let btnRejouer = document.querySelector("#btn-rejouer");
@@ -53,6 +55,34 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.error("L'élément avec l'ID 'btn-rejouer' n'a pas été trouvé.");
   }
+
+    let lettre = document.querySelector("#lettre");
+    let btnValider = document.querySelector("#btn-valider");
+
+  /**
+     * * permet de vérifier le contenu de l'input lettre
+     */
+  lettre.addEventListener("input", () => {
+    let lettreTape = lettre.value;
+    verificationInput(lettreTape, btnValider);
+  });
+
+  /**
+   * * permet de valider sa lettre avec la touche "entrer"
+   * ! Régler problème : lettre pas valide accepté quand même
+   */
+  lettre.addEventListener('keypress', function (e) {
+    let lettreTape = lettre.value;
+
+    if(!verificationInput(lettreTape, btnValider)){
+      if (e.key === 'Enter') {
+        lancement();
+      }
+    }
+    else{
+      console.log("erreur mauvaise donnée");
+    }
+  });
 });
 /**
  * * permettra si checkBox activer aide coché de donner
@@ -227,30 +257,7 @@ function jeu(motRandomRevele) {
   let count = 0;
 
   btnValider.disabled = true;
-  /**
-   * * permet de vérifier le contenu de l'input lettre
-   */
-  lettre.addEventListener("input", () => {
-    let lettreTape = lettre.value;
-    verificationInput(lettreTape, btnValider);
-  });
-
-  /**
-   * * permet de valider sa lettre avec la touche "entrer"
-   * ! Régler problème : lettre pas valide accepté quand même
-   */
-  lettre.addEventListener('keypress', function (e) {
-    let lettreTape = lettre.value;
-    if(!verificationInput(lettreTape, btnValider)){
-      if (e.key === 'Enter') {
-        lancement();
-      }
-    }
-    else{
-      console.log("erreur mauvaise donnée");
-    }
-});
-
+  
   console.log(motEnCours);
   console.log(motRandomRevele);
 
