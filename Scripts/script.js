@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let images = document.querySelector("#image");
   let btnRejouer = document.querySelector("#btn-rejouer");
   let aideLabel = document.querySelector("#aideLabel");
+  let historiqueElement = document.querySelector("#historiqueListe");
 
   if (btnRejouer) {
     btnRejouer.addEventListener("click", () => {
@@ -48,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       ,"E","F","G","H","I","J","K"
                     ,"L","M","N","O","P","Q","R","S",
                     "T","U","V","W","X","Y","Z"];
+      historique = [];
       images.src = "/images/start.png";
       aideLabel.textContent = "";
       lancement();
@@ -69,12 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /**
    * * permet de valider sa lettre avec la touche "entrer"
-   * ! Régler problème : lettre pas valide accepté quand même
    */
   lettre.addEventListener('keypress', function (e) {
     let lettreTape = lettre.value;
-
-    if(!verificationInput(lettreTape, btnValider)){
+    if(!isVoidInput(lettreTape) && isOnlyOneCharacter(lettreTape) && !isLetterUsed(lettreTape, btnValider) && isStringOnlyLetters(lettreTape)){
       if (e.key === 'Enter') {
         lancement();
       }
@@ -193,7 +193,7 @@ async function lancement() {
     aide = true;
   }
 
-  let nbIterationMot = 0;
+  let motDejaUtilise = 0;
 
   /**
    ** récupération des mots dans la BDD via mon API
@@ -215,7 +215,6 @@ async function lancement() {
       motEnCours = mask;
       nbMotsGenere++;
       mot.textContent = motEnCours;
-      wordsAlreadyUse.push(word);
       console.log(wordsAlreadyUse);
     }
     catch (error){
@@ -223,24 +222,22 @@ async function lancement() {
     }
   }
 
-
-  /**
-   * ! Ne marche pas pour l'instant
-  for (let i = 0; i < wordsAlreadyUse.length; i++) {
+/*
+  let i;
+  for (i = 0; i < wordsAlreadyUse.length; i++) {
     if (word === wordsAlreadyUse[i]) {
-      nbIterationMot++;
+      console.log("tfgddddddddddddddddddddddddddddd");
+      motDejaUtilise++;
     }
   }
 
-  if(nbIterationMot >=1){
+  if(motDejaUtilise >=1){
     lancement();
-  }
-  else{
-    console.log("tatatata");
   }
 */
   motGenere = true;
-  nbIterationMot = 0;
+  wordsAlreadyUse.push(word);
+  motDejaUtilise = 0;
 
   jeu(word);
 }
@@ -359,6 +356,7 @@ function finJeu(gagne, mot, btnValider) {
                       ,"E","F","G","H","I","J","K"
                     ,"L","M","N","O","P","Q","R","S",
                     "T","U","V","W","X","Y","Z"];
+  historique = [];
   btnValider.disabled = true;
   motGenere = false;
   if (gagne) {
@@ -392,7 +390,7 @@ function affichageLettreRestante(lettreTape) {
   for (let i = 0; i < lettreRestante.length; i++) {
     lettreTape = lettreTape.toUpperCase();
     if (lettreTape === lettreRestante[i]) {
-      console.log("lettre disponible" + lettreTape);
+      console.log(`lettre disponible ${lettreTape}`);
       lettreRestante.splice(i, 1);
       break;
     }
