@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     ,"L","M","N","O","P","Q","R","S",
                     "T","U","V","W","X","Y","Z"];
       historique = [];
-      images.src = "/images/start.png";
+      images.src = "/dist/images/start.png";
       aideLabel.textContent = "";
       lancement();
     });
@@ -370,7 +370,7 @@ function finJeu(gagne, mot, btnValider) {
   } else {
     Swal.fire("Dommage !", `Le mot était : ${mot}`, "error");
   }
-  images.src = "/images/start.png";
+  images.src = "/dist/images/start.png";
   nbChances = 10;
   aideLabel.textContent = "";
   lancement();
@@ -430,33 +430,33 @@ function generatedImages() {
   let images = document.querySelector("#image");
   switch (nbChances) {
     case 9:
-      images.src = "/images/poteau1.png";
+      images.src = "/dist/images/poteau1.png";
       break;
     case 8:
-      images.src = "/images/poteau2.png";
+      images.src = "/dist/images/poteau2.png";
       break;
     case 7:
-      images.src = "/images/poteau3.png";
+      images.src = "/dist/images/poteau3.png";
       break;
     case 6:
-      images.src = "/images/poteau4.png";
+      images.src = "/dist/images/poteau4.png";
       break;
     case 5:
-      images.src = "/images/poteau5.png";
+      images.src = "/dist/images/poteau5.png";
       break;
     case 4:
-      images.src = "/images/poteau6.png";
+      images.src = "/dist/images/poteau6.png";
       break;
     case 3:
-      images.src = "/images/poteau7.png";
+      images.src = "/dist/images/poteau7.png";
       break;
     case 2:
-      images.src = "/images/poteau8.png";
+      images.src = "/dist/images/poteau8.png";
       break;
     case 1:
-      images.src = "/images/poteau9.png";
+      images.src = "/dist/images/poteau9.png";
     case 0: 
-      images.src = "/images/poteau10.png";
+      images.src = "/dist/images/poteau10.png";
   }
 }
 /**
