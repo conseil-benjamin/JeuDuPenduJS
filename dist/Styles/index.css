@@ -14,6 +14,7 @@ header {
   top: 0;
   margin: 0.5em 0em 0em 0em;
   font-size: 1.5rem;
+  font-family: "Libre Baskerville", serif;
 }
 
 .btn-rejouer {
@@ -42,6 +43,7 @@ header {
   padding: 5em;
   border: 2px solid black;
   border-radius: 50px;
+  box-shadow: 20px 20px 60px #303030, -20px -20px 60px #404040;
   margin: 3em;
   display: none;
 }
@@ -90,6 +92,7 @@ header {
   display: none;
   border: 2px solid black;
   border-radius: 50px;
+  box-shadow: 20px 20px 60px #303030, -20px -20px 60px #404040;
   width: 100%;
   margin: 3em;
   padding: 3em;
@@ -114,7 +117,9 @@ header {
   justify-content: space-evenly; /* Pour espacer .rules et .checkBoxElements */
   padding: 3em;
   border: 2px solid black;
+  box-shadow: 20px 20px 60px #303030, -20px -20px 60px #404040;
   border-radius: 50px;
+  margin: 0 4em 0 4em;
 }
 .zoneSettings p, .zoneSettings label {
   margin: 0em 1em 1em 1em;
@@ -272,15 +277,6 @@ input[type=checkbox] {
   left: 16px;
 }
 
-#homePageId {
-  display: none;
-  cursor: pointer;
-  margin: 1em;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 .rules {
   margin: 0 3em 0 0;
 }
@@ -288,7 +284,6 @@ input[type=checkbox] {
 #backHomePageID {
   position: absolute;
   bottom: 0;
-  right: 100%;
 }
 
 @media screen and (max-width: 767px) {

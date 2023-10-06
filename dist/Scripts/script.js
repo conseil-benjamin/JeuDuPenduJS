@@ -40,6 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let aideLabel = document.querySelector("#aideLabel");
   let historiqueElement = document.querySelector("#historiqueListe");
 
+  let btnBackHomePage = document.querySelector("#backHomePageID");
+  btnBackHomePage.style.display = "block";
+
   if (btnRejouer) {
     btnRejouer.addEventListener("click", () => {
       document.querySelector("#lettre").value = "";
@@ -104,11 +107,9 @@ function initialisation(){
 
   let zoneSettings = document.querySelector(".zoneSettings");
   zoneSettings.style = " display: flex; align-items: center; justify-content: center; padding: 2em; margin: 3em; width= 20%";
-  // marche pas - id pas reconnu
-  /*
-  let btnBackHomePage = document.querySelector("#homePageId");
+ 
+  let btnBackHomePage = document.querySelector("#backHomePageID");
   btnBackHomePage.style.display = "block";
-  */
 
   let checkbox = document.querySelector("#checkBoxAide");
   let checkOrNot;
@@ -137,7 +138,7 @@ function retourPageAcueil(){
   let btnJouer = document.querySelector("#btn-Jouer");
   btnJouer.style.display = "block";
 
-  let btnBackHomePage = document.querySelector("#homePageId");
+  let btnBackHomePage = document.querySelector("#backHomePageID");
   btnBackHomePage.style.display = "none";
 }
 
@@ -222,7 +223,6 @@ async function lancement() {
     }
   }
 
-/*
   let i;
   for (i = 0; i < wordsAlreadyUse.length; i++) {
     if (word === wordsAlreadyUse[i]) {
@@ -230,16 +230,19 @@ async function lancement() {
       motDejaUtilise++;
     }
   }
-
-  if(motDejaUtilise >=1){
+/*
+  if(motDejaUtilise >=1 && wordsAlreadyUse.length === words.length){
+    console.log("plus de mots");
+  } else if(motDejaUtilise >=1){
     lancement();
+  } else{
+    
   }
 */
-  motGenere = true;
-  wordsAlreadyUse.push(word);
-  motDejaUtilise = 0;
-
-  jeu(word);
+motGenere = true;
+    wordsAlreadyUse.push(word);
+    motDejaUtilise = 0;
+    jeu(word);
 }
 
 function jeu(motRandomRevele) {
