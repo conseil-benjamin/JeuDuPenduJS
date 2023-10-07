@@ -33,28 +33,29 @@ String.prototype.replaceAt = function (index, replacement) {
  */
 // 
 
+function resetValue(){
+  document.querySelector("#lettre").value = "";
+  let images = document.querySelector("#image");
+  let aideLabel = document.querySelector("#aideLabel");
+  motGenere = false;
+  nbChances = 10;
+  lettreRestante = ["A","B","C","D"
+                  ,"E","F","G","H","I","J","K"
+                ,"L","M","N","O","P","Q","R","S",
+                "T","U","V","W","X","Y","Z"];
+  historique = [];
+  images.src = "/dist/images/start.png";
+  aideLabel.textContent = "";
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-  let images = document.querySelector("#image");
   let btnRejouer = document.querySelector("#btn-rejouer");
-  let aideLabel = document.querySelector("#aideLabel");
-  let historiqueElement = document.querySelector("#historiqueListe");
-
   let btnBackHomePage = document.querySelector("#backHomePageID");
   btnBackHomePage.style.display = "block";
 
   if (btnRejouer) {
     btnRejouer.addEventListener("click", () => {
-      document.querySelector("#lettre").value = "";
-      motGenere = false;
-      nbChances = 10;
-      lettreRestante = ["A","B","C","D"
-                      ,"E","F","G","H","I","J","K"
-                    ,"L","M","N","O","P","Q","R","S",
-                    "T","U","V","W","X","Y","Z"];
-      historique = [];
-      images.src = "/dist/images/start.png";
-      aideLabel.textContent = "";
+      resetValue();
       lancement();
     });
   } else {
@@ -88,8 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 /**
- * * permettra si checkBox activer aide coché de donner
- * * un indice à l'utilisateur quand il lui reste peu de vie
+ * * permet d'initialiser tout ce qu'il faut avant que le joueur commence à jouer
  */
 // 
 function initialisation(){
@@ -111,17 +111,7 @@ function initialisation(){
   let btnBackHomePage = document.querySelector("#backHomePageID");
   btnBackHomePage.style.display = "block";
 
-  let checkbox = document.querySelector("#checkBoxAide");
-  let checkOrNot;
-  
-  if(checkbox.checked ){
-    checkOrNot = true;
-  }
-  else{
-    console.log("Case non coché");
-    checkOrNot = false;
-  }
-  return checkOrNot;
+  lancement();
 }
 
 
@@ -190,8 +180,14 @@ async function lancement() {
 
   aide = false;
 
-  if (initialisation() === true){
+  let checkbox = document.querySelector("#checkBoxAide");
+  
+  if(checkbox.checked ){
     aide = true;
+  }
+  else{
+    console.log("Case non coché");
+    aide = false;
   }
 
   let motDejaUtilise = 0;
@@ -215,7 +211,6 @@ async function lancement() {
       console.log(difficulty);
       motEnCours = mask;
       nbMotsGenere++;
-      mot.textContent = motEnCours;
       console.log(wordsAlreadyUse);
     }
     catch (error){
@@ -228,20 +223,22 @@ async function lancement() {
     if (word === wordsAlreadyUse[i]) {
       console.log("tfgddddddddddddddddddddddddddddd");
       motDejaUtilise++;
+      console.log(motDejaUtilise);
+      break;
     }
   }
-/*
+  /*
   if(motDejaUtilise >=1 && wordsAlreadyUse.length === words.length){
     console.log("plus de mots");
   } else if(motDejaUtilise >=1){
+    motDejaUtilise = 0;
     lancement();
-  } else{
-    
   }
 */
-motGenere = true;
+    motGenere = true;
     wordsAlreadyUse.push(word);
     motDejaUtilise = 0;
+    mot.textContent = motEnCours;
     jeu(word);
 }
 
@@ -340,8 +337,7 @@ function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
        * * sinon on retourne rien
        */
       (nbChances === 0 ? ((gagne = false), finJeu(gagne, motRandomRevele, btnValider)) : null),
-      // implémenter if (nbChances === 0) pour regler probleme de nb erreurs
-      (message = "Nombre de chances : " + nbChances + "<br>Mauvaise lettre"),
+      (message = "Nombre de chances : " + nbChances),
       (document.getElementById("nbChances").innerHTML = message))
     : (nbChancesElement.textContent = `Nombre de chances : ${nbChances}`);
 }
@@ -355,13 +351,7 @@ function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
 function finJeu(gagne, mot, btnValider) {
   let images = document.querySelector("#image");
   nbMots++;
-  lettreRestante = ["A","B","C","D"
-                      ,"E","F","G","H","I","J","K"
-                    ,"L","M","N","O","P","Q","R","S",
-                    "T","U","V","W","X","Y","Z"];
-  historique = [];
   btnValider.disabled = true;
-  motGenere = false;
   if (gagne) {
     Swal.fire(
       "Bien jouer !",
@@ -373,9 +363,7 @@ function finJeu(gagne, mot, btnValider) {
   } else {
     Swal.fire("Dommage !", `Le mot était : ${mot}`, "error");
   }
-  images.src = "/dist/images/start.png";
-  nbChances = 10;
-  aideLabel.textContent = "";
+  resetValue();
   lancement();
 }
 
@@ -462,11 +450,6 @@ function generatedImages() {
       images.src = "/dist/images/poteau10.png";
   }
 }
-/**
- * * vérification de l'input de l'user
- * * si pas correct on désactive le btn
- */
-
 
 /**
  * * Test unitaire qui vérifie si le caractère rentré par l'user est bien :

@@ -2,6 +2,7 @@ const express = require("express");
 const connectDB = require("./config/db");
 const dotenv = require("dotenv").config();
 var cors = require("cors");
+const PORT = 3000;
 
 const app = express();
 //connexion à la DB
