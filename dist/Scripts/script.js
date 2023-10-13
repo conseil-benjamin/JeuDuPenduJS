@@ -1,7 +1,8 @@
 let motGenere = false;
-let motRandomRevele;
 let motEnCours;
-let words;
+let motRandomRevele;
+let words = [];
+let wordsActuel;
 let word;
 let mask;
 let clue;
@@ -9,8 +10,8 @@ let aide;
 let score = 0;
 let nbChances = 10;
 let nbMots = 0;
+let nbRestart = 0;
 let nbMotsGenere = 0;
-let wordsAlreadyUse = [];
 let historique = [];
 let lettreRestante = ["A","B","C","D"
                       ,"E","F","G","H","I","J","K"
@@ -50,11 +51,10 @@ function resetValue(){
 
 document.addEventListener("DOMContentLoaded", () => {
   let btnRejouer = document.querySelector("#btn-rejouer");
-  let btnBackHomePage = document.querySelector("#backHomePageID");
-  btnBackHomePage.style.display = "block";
 
   if (btnRejouer) {
     btnRejouer.addEventListener("click", () => {
+      nbRestart++;
       resetValue();
       lancement();
     });
@@ -80,11 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let lettreTape = lettre.value;
     if(!isVoidInput(lettreTape) && isOnlyOneCharacter(lettreTape) && !isLetterUsed(lettreTape, btnValider) && isStringOnlyLetters(lettreTape)){
       if (e.key === 'Enter') {
-        lancement();
+        jeu();
       }
-    }
-    else{
-      console.log("erreur mauvaise donnée");
+    } else{
+      btnValider.disabled = true;
     }
   });
 });
@@ -141,8 +140,6 @@ async function getWords(){
   let wordsMediumElement = document.querySelector("#checkboxMoyenInput");
   let wordsHardElement = document.querySelector("#checkboxDifficilenInput");
 
-  console.log(wordsHardElement.checked);  
-
   const apiUrl = {
     easy: "https://words-api-v1.onrender.com/api/v1/words/easy-words",
     medium: "https://words-api-v1.onrender.com/api/v1/words/medium-words",
@@ -177,70 +174,54 @@ async function lancement() {
   console.log("---------------------------------------------------");
 
   let mot = document.querySelector("#textePendu");
-
-  aide = false;
-
   let checkbox = document.querySelector("#checkBoxAide");
-  
-  if(checkbox.checked ){
-    aide = true;
-  }
-  else{
-    console.log("Case non coché");
-    aide = false;
-  }
 
-  let motDejaUtilise = 0;
+  checkbox.checked ? aide = true : aide = false;
+    /**&
+      ** récupération des mots dans la BDD via mon API
+      ** et affichage d'un mot aléatoire à l'écran 
+    */
+    if (!motGenere) {
+      try{
+        if (nbRestart === 0) {
+          console.log(nbRestart);
+          words = await getWords(); 
+        }
+        let wordIndex = Math.floor(Math.random() * words.length);
+        let wordJson = words[wordIndex];
+        mask = wordJson.mask;
+        word = wordJson.word;
+        clue = wordJson.clue;
+        difficulty = wordJson.difficulty;
+        console.log(words);
+        let indexToRemove = words.indexOf(word);
+        console.log(word);
+        console.log(indexToRemove);
+        words.splice(indexToRemove, 1); 
+        console.log(words);
+        motEnCours = mask;
+      }
+      catch (error){
+        console.error("Une erreur est survenue : ", error);
+      }
+    } 
+  motGenere = true;
+  mot.textContent = motEnCours;
+  jeu(word);
+} 
 
-  /**
-   ** récupération des mots dans la BDD via mon API
-   ** et affichage d'un mot aléatoire à l'écran 
-  */
-  if (!motGenere) {
-    try{
-      words = await getWords();
-      console.log(words);
-      let wordIndex = Math.floor(Math.random() * words.length);
-      let wordJson = words[wordIndex];
-      mask = wordJson.mask;
-      word = wordJson.word;
-      clue = wordJson.clue;
-      difficulty = wordJson.difficulty;
-      console.log(word);
-      console.log(clue);
-      console.log(difficulty);
-      motEnCours = mask;
-      nbMotsGenere++;
-      console.log(wordsAlreadyUse);
-    }
-    catch (error){
-      console.error("Une erreur est survenue : ", error);
-    }
+function arraysEqual(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
   }
-
-  let i;
-  for (i = 0; i < wordsAlreadyUse.length; i++) {
-    if (word === wordsAlreadyUse[i]) {
-      console.log("tfgddddddddddddddddddddddddddddd");
-      motDejaUtilise++;
-      console.log(motDejaUtilise);
-      break;
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return false;
     }
   }
-  /*
-  if(motDejaUtilise >=1 && wordsAlreadyUse.length === words.length){
-    console.log("plus de mots");
-  } else if(motDejaUtilise >=1){
-    motDejaUtilise = 0;
-    lancement();
-  }
-*/
-    motGenere = true;
-    wordsAlreadyUse.push(word);
-    motDejaUtilise = 0;
-    mot.textContent = motEnCours;
-    jeu(word);
+  return true;
 }
+
 
 function jeu(motRandomRevele) {
   let lettre = document.querySelector("#lettre");
@@ -248,7 +229,6 @@ function jeu(motRandomRevele) {
   let nbChancesElement = document.querySelector("#nbChances");
   let btnValider = document.querySelector("#btn-valider");
   let mot = document.querySelector("#textePendu");
-  let aideLabel = document.querySelector("#aideLabel");
   let lettreTape = lettre.value;
   lettreTape = lettreTape.toLowerCase();
   let count = 0;
@@ -256,15 +236,15 @@ function jeu(motRandomRevele) {
   btnValider.disabled = true;
   
   console.log(motEnCours);
-  console.log(motRandomRevele);
+  console.log(word);  
 
   // boucle pour chercher une lettre correspondant à l'input
   // dans le mot à trouver
   // si trouver remplacer par l'input à l'index qu'il faut
   for (let i = 0; i < motEnCours.length; i++) {
-    if (lettreTape === motRandomRevele[i]) {
+    if (lettreTape === word[i]) {
       lettreTape = lettreTape.toLowerCase();
-      motEnCours = motEnCours.replaceAt(i * 2, motRandomRevele[i]);
+      motEnCours = motEnCours.replaceAt(i * 2, word[i]);
       count++;
       lettreBonne = true;
     }
@@ -282,21 +262,12 @@ function jeu(motRandomRevele) {
   nbChancesElement.textContent = `Nombre de chances : ${nbChances}`;
   document.querySelector("#score").innerHTML = `Score : ${score} / ${nbMots}`;
 
-  console.log(aide);
-  if(nbChances <= 3 && aide === true){
-      aideLabel.textContent = `Indice : ${clue}`;
-  }
-
-  console.log(clue);
-
-  console.log(aideLabel.textContent);
-
   // permet que la logique du jeu ne joue pas un 
   // tour sans que le joueur puisse commencer
   // sinon il commence direct avec nbChances --
   isVoidInput(lettreTape)
     ? console.log("Début")
-    : isEndGameOrNot(btnValider, motRandomRevele, lettreBonne);
+    : isEndGameOrNot(btnValider, word, lettreBonne);
 }
 
 /**
@@ -340,16 +311,19 @@ function isEndGameOrNot(btnValider, motRandomRevele, lettreBonne) {
       (message = "Nombre de chances : " + nbChances),
       (document.getElementById("nbChances").innerHTML = message))
     : (nbChancesElement.textContent = `Nombre de chances : ${nbChances}`);
+
+    if(nbChances <= 3 && aide === true){
+      aideLabel.textContent = `Indice : ${clue}`;
+  }
 }
 
 /**
- * * affichage d'une pop up de fin de jeu
- * * récapitulant son score actuel/nbMots
- * * ainsi que si il vient de gagner ou non
+ * * affichage d'une pop up de fin de jeu récapitulant 
+ * * son score actuel/nbMots ainsi que si il vient de gagner ou non
+ * * Et reset les valeurs de certains champs
  */
 
 function finJeu(gagne, mot, btnValider) {
-  let images = document.querySelector("#image");
   nbMots++;
   btnValider.disabled = true;
   if (gagne) {
@@ -371,17 +345,13 @@ function finJeu(gagne, mot, btnValider) {
  * * à chaque lettreBonne on la stocke dans un tableau et
  * * on l'affiche à l'écran pour que l'user sache ce qu'il
  * * a déjà jouer
- * ? Pourquoi pas faire l'inverse, donc afficher les lettres qu'il n'a pas fait
- * ? L'affiche sous forme d'array de 4-5 par ligne sur la droite du jeu
  */
 function affichageLettreRestante(lettreTape) {
-  console.log(lettreTape);
   let historiqueElement = document.querySelector("#historiqueListe");
 
   for (let i = 0; i < lettreRestante.length; i++) {
     lettreTape = lettreTape.toUpperCase();
     if (lettreTape === lettreRestante[i]) {
-      console.log(`lettre disponible ${lettreTape}`);
       lettreRestante.splice(i, 1);
       break;
     }
@@ -393,10 +363,10 @@ function affichageLettreRestante(lettreTape) {
 }
 
 function creationHistorique(lettreTape) {
-  console.log(lettreTape);
   let lettreDejaPresente = false; // Variable pour suivre si la lettre tapée est déjà présente dans l'historique.
 
   for (let i = 0; i < historique.length; i++) {
+    lettreTape = lettreTape.toLowerCase();
     if (lettreTape === historique[i]) {
       console.log("lettre déjà dans l'historique");
       lettreDejaPresente = true;
@@ -460,8 +430,8 @@ function verificationInput(lettreTape, btnValider) {
   btnValider.disabled = true;
 
   if (
-    !isStringOnlyLetters(lettreTape) ||
     isVoidInput(lettreTape) ||
+    !isStringOnlyLetters(lettreTape) ||
     !isOnlyOneCharacter(lettreTape) ||
     isLetterUsed(lettreTape, btnValider)
   ) {
@@ -480,11 +450,12 @@ function isOnlyOneCharacter(value) {
 }
 
 function isStringOnlyLetters(value) {
-  let regex = new RegExp("[a-z]+$");
+  let regex = new RegExp("[a-zA-Z]+$");
   return typeof value === "string" && regex.test(value);
 }
 
 function isLetterUsed(value, btnValider) {
+  value = value.toLowerCase();
   let count = 0;
   for (let i = 0; i < historique.length; i++) {
     if (historique[i] === value) {

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="/dist/Styles/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@
         </p>
       </div>
       <div class="checkBoxElements">
-        <img src="/dist/images/icons/setttings.png" alt="icone paramètres" width="100" height="100">
+        <img src="/dist/images/icons/settings.png" alt="icone paramètres" width="60" height="60">
       <p><strong><u>Paramètres de partie :</u></strong></p>
       <ul>
         <li>
@@ -76,14 +76,14 @@
       <p id="textePendu">Chargement ...</p>
       <div class="inputDiv">
         <input type="text" name="letre" id="lettre" />
-        <button type="button" id="btn-valider" onclick="lancement()">Valider</button>
+        <button type="button" id="btn-valider" onclick="jeu()">Valider</button>
       </div>
       <p id="nbChances">Nombres de chance :</p>
       <p id="aideLabel"></p>
+      <p id="score">Score :</p>
       <div class="btn-rejouer">
         <button type="button" id="btn-rejouer">Rejouer</button>
       </div>
-      <p id="score">Score :</p>
       <div class="images">
         <img
           id="image"

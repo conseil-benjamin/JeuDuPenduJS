@@ -57,6 +57,10 @@ header {
   font-family: 'Libre Baskerville', serif;
 }
 
+a{
+  cursor: pointer;
+}
+
 .btn-rejouer {
   display: flex;
   justify-content: center;
@@ -95,7 +99,7 @@ header {
     height: 2em;
   }
   #nbChances {
-    padding: 3em 0 0 0;
+    padding: 1em 0 1em 0;
     text-align: center;
   }
   #textePendu {
@@ -107,12 +111,13 @@ header {
     padding: 0.5em;
     transition: 0.3s ease-in-out;
     border-radius: 20px;
+    margin: 0.5em;
     &:hover {
       @include buttonHover();
     }
   }
   #score {
-    padding: 2em 0 0 0;
+    margin: 1em 0 1em 0;
     text-align: center;
   }
 }
@@ -233,15 +238,17 @@ input[type=checkbox] {
 }
 
 #backHomePageID{
+  display: none;
   position: absolute;
   bottom: 0;
+  margin: 0 0 0 50%;
 }
 
 
 @media screen and (max-width: 767px) {
   body{
     flex-direction: column;
-    height: 190vh;
+    height: 26x0vh;
   }
   .zoneJeu{
     max-width: 40%;
@@ -251,21 +258,25 @@ input[type=checkbox] {
   }
   .zoneHistorique{
     font-size: 0.5em;
+    max-height: 5vh;
     width: 50%;
+  }
+  #backHomePageID{
+    display: none;
   }
 }
 
 @media screen and (min-width: 767px) and (max-width: 1023px){
   body{
     flex-direction: column;
-    height: 190vh;
+    max-height: 190vh;
   }
   .zoneJeu{
     max-width: 40%;
   }
   .zoneHistorique{
     padding: 1em 3em 4em 3em;
-    max-height: 2vh;
+    max-height: 5vh;
     font-size: 1em;
     width: 50%;
   }
