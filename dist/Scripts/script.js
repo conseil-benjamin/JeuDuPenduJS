@@ -177,7 +177,7 @@ async function lancement() {
   let checkbox = document.querySelector("#checkBoxAide");
 
   checkbox.checked ? aide = true : aide = false;
-    /**&
+    /**
       ** récupération des mots dans la BDD via mon API
       ** et affichage d'un mot aléatoire à l'écran 
     */
@@ -238,9 +238,11 @@ function jeu(motRandomRevele) {
   console.log(motEnCours);
   console.log(word);  
 
-  // boucle pour chercher une lettre correspondant à l'input
-  // dans le mot à trouver
-  // si trouver remplacer par l'input à l'index qu'il faut
+
+  /**
+    ** boucle pour chercher une lettre correspondant à l'input
+    ** dans le mot à trouver si trouver remplacer par l'input à l'index qu'il faut 
+  */
   for (let i = 0; i < motEnCours.length; i++) {
     if (lettreTape === word[i]) {
       lettreTape = lettreTape.toLowerCase();
@@ -249,11 +251,16 @@ function jeu(motRandomRevele) {
       lettreBonne = true;
     }
   }
-  // affichage du mot actualisé à l'écran
+  /**
+   **  affichage du mot actualisé à l'écran
+   */
   mot.textContent = motEnCours;
 
-  // permet de vérifier si la lettre rentré 
-  // a été correct ou non
+  /**
+   ** permet de vérifier si la lettre rentré 
+   ** a été correct ou non
+   */
+
   count === 0 ? (lettreBonne = false) : (lettreBonne = true);
   creationHistorique(lettreTape);
   affichageLettreRestante(lettreTape);
@@ -262,9 +269,11 @@ function jeu(motRandomRevele) {
   nbChancesElement.textContent = `Nombre de chances : ${nbChances}`;
   document.querySelector("#score").innerHTML = `Score : ${score} / ${nbMots}`;
 
-  // permet que la logique du jeu ne joue pas un 
-  // tour sans que le joueur puisse commencer
-  // sinon il commence direct avec nbChances --
+  /**
+   ** permet que la logique du jeu ne joue pas un
+   ** tour sans que le joueur puisse commencer
+   ** sinon il commence direct avec nbChances --
+   */
   isVoidInput(lettreTape)
     ? console.log("Début")
     : isEndGameOrNot(btnValider, word, lettreBonne);
