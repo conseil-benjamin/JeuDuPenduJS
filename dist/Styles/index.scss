@@ -1,4 +1,3 @@
-
 @mixin buttonHover {
   color: var(--colorQuartz);
   cursor: pointer;
@@ -19,7 +18,7 @@
   width: 20px;
   height: 18px;
   border-radius: 50%;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   cursor: pointer;
   position: absolute;
   top: -2px;
@@ -27,13 +26,13 @@
   background: #ccc;
 }
 
-@mixin boxChecked{
+@mixin boxChecked {
   background: blue;
   left: 16px;
 }
 
-$font-color-dark : #000000;
-$font-color-light : #ffffff;
+$font-color-dark: #000000;
+$font-color-light: #ffffff;
 $colorQwartz: #bcabae;
 $colorDarkBlue: #2a293e;
 $colorWhite: #ffff;
@@ -54,10 +53,10 @@ header {
   top: 0;
   margin: 0.5em 0em 0em 0em;
   font-size: 1.5rem;
-  font-family: 'Libre Baskerville', serif;
+  font-family: "Libre Baskerville", serif;
 }
 
-a{
+a {
   cursor: pointer;
 }
 
@@ -85,11 +84,10 @@ a{
   padding: 5em;
   border: 2px solid black;
   border-radius: 50px;
-  box-shadow:  20px 20px 60px #303030,
-             -20px -20px 60px #404040;
+  box-shadow: 20px 20px 60px #303030, -20px -20px 60px #404040;
   margin: 3em;
   display: none;
-  #aideLabel{
+  #aideLabel {
     text-align: center;
   }
   #lettre {
@@ -122,7 +120,7 @@ a{
   }
 }
 
-.inputDiv{
+.inputDiv {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,8 +132,7 @@ a{
   display: none;
   border: 2px solid black;
   border-radius: 50px;
-  box-shadow:  20px 20px 60px #303030,
-             -20px -20px 60px #404040;
+  box-shadow: 20px 20px 60px #303030, -20px -20px 60px #404040;
   width: 100%;
   margin: 3em;
   padding: 3em;
@@ -160,16 +157,16 @@ a{
   justify-content: space-evenly; /* Pour espacer .rules et .checkBoxElements */
   padding: 3em;
   border: 2px solid black;
-  box-shadow:  20px 20px 60px #303030,
-             -20px -20px 60px #404040;
+  box-shadow: 20px 20px 60px #303030, -20px -20px 60px #404040;
   border-radius: 50px;
   margin: 0 4em 0 4em;
-  p, label{
+  p,
+  label {
     margin: 0em 1em 1em 1em;
   }
   #btn-Jouer {
     height: 50px;
-    width: 100px; 
+    width: 100px;
     padding: 0.5em;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
@@ -180,7 +177,7 @@ a{
   }
 }
 
-input[type=checkbox] {
+input[type="checkbox"] {
   visibility: hidden;
 }
 .checkboxFacileDiv {
@@ -189,7 +186,7 @@ input[type=checkbox] {
 .checkboxFacileDiv label {
   @include labelCheckBox();
 }
-.checkboxFacileDiv input[type=checkbox]:checked + label {
+.checkboxFacileDiv input[type="checkbox"]:checked + label {
   @include boxChecked();
 }
 
@@ -199,7 +196,7 @@ input[type=checkbox] {
 .checkboxMoyenDiv label {
   @include labelCheckBox();
 }
-.checkboxMoyenDiv input[type=checkbox]:checked + label {
+.checkboxMoyenDiv input[type="checkbox"]:checked + label {
   @include boxChecked();
 }
 
@@ -209,7 +206,7 @@ input[type=checkbox] {
 .checkBoxDifficileDiv label {
   @include labelCheckBox();
 }
-.checkBoxDifficileDiv input[type=checkbox]:checked + label {
+.checkBoxDifficileDiv input[type="checkbox"]:checked + label {
   @include boxChecked();
 }
 
@@ -219,7 +216,7 @@ input[type=checkbox] {
 .checkBoxTouteDifficulteDiv label {
   @include labelCheckBox();
 }
-.checkBoxTouteDifficulteDiv input[type=checkbox]:checked + label {
+.checkBoxTouteDifficulteDiv input[type="checkbox"]:checked + label {
   @include boxChecked();
 }
 
@@ -229,63 +226,81 @@ input[type=checkbox] {
 .checkBoxAideDiv label {
   @include labelCheckBox();
 }
-.checkBoxAideDiv input[type=checkbox]:checked + label {
+.checkBoxAideDiv input[type="checkbox"]:checked + label {
   @include boxChecked();
 }
 
-.rules{
+.rules {
   margin: 0 3em 0 0;
 }
 
-#backHomePageID{
+#backHomePageID {
   display: none;
   position: absolute;
   bottom: 0;
-  margin: 0 0 0 50%;
+  margin: 0 0 0 48%;
 }
 
+.helpAndEasyWordsBox,
+.middleAndHardWordsBox {
+  display: flex;
+}
+
+label {
+  margin: 0 10em 0 0;
+}
+
+.btnJouerDiv {
+  display: flex;
+  flex-direction: column;
+}
 
 @media screen and (max-width: 767px) {
-  body{
+  body {
+    margin: auto;
     flex-direction: column;
-    height: 26x0vh;
+    min-height: 210vh;
+    max-height: 220vh;
+    overflow-x: hidden;
   }
-  .zoneJeu{
+  .zoneJeu {
     max-width: 40%;
   }
-  .zoneSettings{
+  .zoneSettings {
     max-height: 70vh;
   }
-  .zoneHistorique{
-    font-size: 0.5em;
+  .zoneHistorique {
+    font-size: 0.8em;
     max-height: 5vh;
     width: 50%;
   }
-  #backHomePageID{
+  .checkBoxElements {
     display: none;
+  }
+  #backHomePageID {
+    visibility: hidden;
   }
 }
 
-@media screen and (min-width: 767px) and (max-width: 1023px){
-  body{
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  body {
     flex-direction: column;
-    max-height: 190vh;
+    min-height: 160vh;
+    max-height: 200vh;
   }
-  .zoneJeu{
+  .zoneJeu {
     max-width: 40%;
   }
-  .zoneHistorique{
+  .zoneHistorique {
     padding: 1em 3em 4em 3em;
     max-height: 5vh;
     font-size: 1em;
     width: 50%;
   }
-  .zoneSettings{
+  .zoneSettings {
     max-height: 60vh;
   }
-
 }
 
 @media screen and (min-width: 1024px) {
-  
 }

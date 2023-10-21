@@ -1,0 +1,10 @@
+										Idée jeu pendu JS 
+
+Améliorations : 
+	- api à du mal à charger (voir si autre hébergeur)
+	- changer les images
+	- passer en typescript 
+	- utiliser le local storage pour stocker le score pour toujours
+		- Et donc proposer un moyen de relancer une partie
+
+Problème à régler : 

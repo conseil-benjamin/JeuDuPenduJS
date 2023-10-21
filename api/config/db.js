@@ -17,7 +17,7 @@ async function connectDB() {
     console.log("DB connectée ");
   } catch (err) {
     console.error(err);
-    process.exit(); // Appel correct pour quitter le processus en cas d'erreur
+    process.exit();
   }
 }
 

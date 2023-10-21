@@ -126,7 +126,8 @@ a {
   border-radius: 50px;
   margin: 0 4em 0 4em;
 }
-.zoneSettings p, .zoneSettings label {
+.zoneSettings p,
+.zoneSettings label {
   margin: 0em 1em 1em 1em;
 }
 .zoneSettings #btn-Jouer {
@@ -290,13 +291,30 @@ input[type=checkbox] {
   display: none;
   position: absolute;
   bottom: 0;
-  margin: 0 0 0 50%;
+  margin: 0 0 0 48%;
+}
+
+.helpAndEasyWordsBox,
+.middleAndHardWordsBox {
+  display: flex;
+}
+
+label {
+  margin: 0 10em 0 0;
+}
+
+.btnJouerDiv {
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 767px) {
   body {
+    margin: auto;
     flex-direction: column;
-    height: 26x0vh;
+    min-height: 210vh;
+    max-height: 220vh;
+    overflow-x: hidden;
   }
   .zoneJeu {
     max-width: 40%;
@@ -305,18 +323,22 @@ input[type=checkbox] {
     max-height: 70vh;
   }
   .zoneHistorique {
-    font-size: 0.5em;
+    font-size: 0.8em;
     max-height: 5vh;
     width: 50%;
   }
-  #backHomePageID {
+  .checkBoxElements {
     display: none;
+  }
+  #backHomePageID {
+    visibility: hidden;
   }
 }
 @media screen and (min-width: 767px) and (max-width: 1023px) {
   body {
     flex-direction: column;
-    max-height: 190vh;
+    min-height: 160vh;
+    max-height: 200vh;
   }
   .zoneJeu {
     max-width: 40%;
